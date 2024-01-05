@@ -1,9 +1,15 @@
 import React from 'react'
 
 import "./index.css"
+import { Route, Routes } from 'react-router-dom'
+import Auth from './pages/Auth'
 function App() {
   return (
-    <div className='text-3xl font-bold bg-primary-900 container'>سلام</div>
+    <div className="container xl:max-w-screen-xl">
+          <Routes>
+      <Route path='/auth' element={<Auth/>}/>
+    </Routes>
+    </div>
   )
 }
 
