@@ -1,21 +1,27 @@
-import React, { useState } from 'react'
-import VerifyButton from '../../UI/VerifyButton'
+import React, { useState } from "react";
+import VerifyButton from "../../UI/VerifyButton";
+import TextField from "../../UI/TextField";
 
 function SendOTPForm() {
-    const [phoneNumber,setPhoneNumber] = useState("")
+  const [phoneNumber, setPhoneNumber] = useState("");
   return (
-    <div className="container max-h-screen">
-        <div className="relative bg-white px-6 pt-10 pb-9 shadow-xl mx-auto w-full max-w-lg rounded-2xl mt-44 space-y-3">
-        <h3 className='text-xl font-semibold'>ورود | ثبت نام</h3>
-        <p className='text-l'>خوش آمدید!</p>
-        <form className='space-y-4'>
-        <label htmlFor='phoneNumber'>لطفا شماره موبایل خود را وارد کنید</label>
-        <input type='number' className='w-full h-10 rounded-lg bg-gray-100 p-4 text-secondary-600 hover:border-2 hover:border-gray-200 focus:border-2 focus:border-cyan-900 focus:transition-all focus:ease-in hover:transition-all hover:ease-in' name='phoneNumber' value={phoneNumber} onChange={(e)=>setPhoneNumber(e.target.value)}/>
-        <VerifyButton text="ارسال کد تایید"/>
+    <div className="container">
+      <div className="OTPformWrapper">
+        <h3 className="text-xl font-semibold">ورود | ثبت نام</h3>
+        <p className="text-l">خوش آمدید!</p>
+        <form className="OTPform">
+          <TextField
+            label="لطفا شماره موبایل خود را وارد کنید"
+            type="text"
+            name="phoneNumber"
+            value={phoneNumber}
+            onChange={setPhoneNumber}
+          />
+          <VerifyButton text="ارسال کد تایید" width="w-80" />
         </form>
-        </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default SendOTPForm
+export default SendOTPForm;
