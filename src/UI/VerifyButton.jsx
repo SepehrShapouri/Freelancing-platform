@@ -2,7 +2,7 @@ import React from 'react'
 
 function VerifyButton({text,width}) {
   return (
-    <button className={`${width} verifyButton`} >{text}</button>
+    <button type='submit' className={`${width} verifyButton`} >{text}</button>
   )
 }
 
