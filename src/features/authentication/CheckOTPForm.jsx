@@ -1,44 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import VerifyButton from "../../UI/VerifyButton";
 import OTPInput from "react-otp-input";
-import { useMutation } from "@tanstack/react-query";
-import { checkOtp, getOtp } from "../../services/authServices";
-import toast from "react-hot-toast";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { useSendOTP } from "../authHooks/useSendOTP";
 import { useCheckOTP } from "../authHooks/useCheckOTP";
+import OTPCoundown from "../../UI/OTPCoundown";
 function CheckOTPForm({ phoneNumber, setStep }) {
   const [otp, setOtp] = useState();
-  const [minutes, setMinutes] = useState(1);
-  const [seconds, setSeconds] = useState(30);
   const { checkOtpHandler } = useCheckOTP();
   const { sendOTPHandler } = useSendOTP();
   const resendOTP = async (e) => {
     sendOTPHandler(e, phoneNumber, setStep);
-    setMinutes(1);
-    setSeconds(30);
   };
-  8;
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (seconds > 0) {
-        setSeconds(seconds - 1);
-      }
-
-      if (seconds === 0) {
-        if (minutes === 0) {
-          clearInterval(interval);
-        } else {
-          setSeconds(59);
-          setMinutes(minutes - 1);
-        }
-      }
-    }, 1000);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, [seconds]);
   return (
     <div className="container">
       <div className="OTPformWrapper otpformwrapper">
@@ -76,30 +49,7 @@ function CheckOTPForm({ phoneNumber, setStep }) {
               border: "1px solid rgb(var(--color-primary-100))",
             }}
           />
-          <div>
-            <button
-              className="text-sm mt-1 w-full flex"
-              disabled={seconds > 0 || minutes > 0}
-              onClick={(e) => resendOTP(e)}
-            >
-              {seconds > 0 || minutes > 0 ? (
-                <span className="flex text-gray-400">
-                  ارسال مجدد کد تا
-                  {
-                    <p className="px-1">
-                      {minutes < 10 ? `0${minutes}` : minutes}:
-                      {seconds < 10 ? `0${seconds}` : seconds}
-                    </p>
-                  }
-                  ثانیه دیگر
-                </span>
-              ) : (
-                <p className="text-cyan-600 hover:text-cyan-800">
-                  ارسال مجدد کد تایید
-                </p>
-              )}
-            </button>
-          </div>
+          <OTPCoundown resendOTP={resendOTP} />
           <span>
             <VerifyButton text="تایید" width="w-80" marginTop="mt-1" />
           </span>

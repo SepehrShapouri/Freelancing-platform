@@ -1,10 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import VerifyButton from "../../UI/VerifyButton";
 import TextField from "../../UI/TextField";
-import { useMutation } from "@tanstack/react-query";
-import { getOtp } from "../../services/authServices";
 import Loader from "../../UI/Loader";
-import toast from "react-hot-toast";
 import { useSendOTP } from "../authHooks/useSendOTP";
 
 function SendOTPForm({ setStep,phoneNumber,onChange}) {
