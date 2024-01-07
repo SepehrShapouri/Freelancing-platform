@@ -1,41 +1,24 @@
 import React, { useEffect, useState } from "react";
-import VerifyButton from "../UI/VerifyButton";
+import VerifyButton from "../../UI/VerifyButton";
 import OTPInput from "react-otp-input";
 import { useMutation } from "@tanstack/react-query";
-import { checkOtp, getOtp } from "../services/authServices";
+import { checkOtp, getOtp } from "../../services/authServices";
 import toast from "react-hot-toast";
 import { IoMdArrowRoundBack } from "react-icons/io";
+import { useSendOTP } from "../authHooks/useSendOTP";
+import { useCheckOTP } from "../authHooks/useCheckOTP";
 function CheckOTPForm({ phoneNumber, setStep }) {
   const [otp, setOtp] = useState();
   const [minutes, setMinutes] = useState(1);
   const [seconds, setSeconds] = useState(30);
-  const { isPending, error, data, mutateAsync } = useMutation({
-    mutationFn: checkOtp,
-  });
-  const checkOtpHandler = async (e) => {
-    e.preventDefault();
-    if(!otp) toast.error("لطفا کد تایید را وارد کنید")
-    try {
-      const data = await mutateAsync({ phoneNumber, otp });
-      toast.success(data.message);
-    } catch (error) {
-        if(otp) toast.error(error.response.data.message)
-    }
-  };
-  const mutateResendOTP = useMutation({
-    mutationFn: getOtp,
-  });
+  const { checkOtpHandler } = useCheckOTP();
+  const { sendOTPHandler } = useSendOTP();
   const resendOTP = async (e) => {
-    e.preventDefault();
-    try {
-      const data = await mutateResendOTP.mutateAsync({ phoneNumber });
-      console.log(data);
-    } catch (error) {
-      toast.error(error?.response?.data?.message);
-    }
+    sendOTPHandler(e, phoneNumber, setStep);
     setMinutes(1);
     setSeconds(30);
   };
+  8;
   useEffect(() => {
     const interval = setInterval(() => {
       if (seconds > 0) {
@@ -65,9 +48,19 @@ function CheckOTPForm({ phoneNumber, setStep }) {
             <IoMdArrowRoundBack fontSize={"22px"} />
           </button>
         </h3>
-        <form className="OTPform" onSubmit={checkOtpHandler} name="checkOTPForm">
+        <form
+          className="OTPform"
+          onSubmit={(e) => checkOtpHandler(e, phoneNumber, otp)}
+          name="checkOTPForm"
+        >
           <label className="self-start">
-             کد ارسال شده به شماره {phoneNumber} وارد کنید. <span className="text-sm opacity-50 cursor-pointer hover:text-rose-400 hover:opacity-100" onClick={()=>setStep(1)}>ویرایش؟</span>
+            کد ارسال شده به شماره {phoneNumber} وارد کنید.
+            <span
+              className="text-sm opacity-50 cursor-pointer hover:text-rose-400 hover:opacity-100"
+              onClick={() => setStep(1)}
+            >
+              ویرایش؟
+            </span>
           </label>
           <OTPInput
             value={otp}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SendOTPForm from "./SendOTPForm";
-import CheckOTPForm from "../CheckOTPForm";
+import CheckOTPForm from "./CheckOTPForm";
 
 function AuthContainer() {
   const [step, setStep] = useState(1);
