@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import VerifyButton from "../UI/VerifyButton";
 import OTPInput from "react-otp-input";
 import { useMutation } from "@tanstack/react-query";
-import { checkOtp } from "../services/authServices";
+import { checkOtp, getOtp } from "../services/authServices";
 import toast from "react-hot-toast";
 
 function CheckOTPForm({ phoneNumber }) {
@@ -20,6 +20,20 @@ function CheckOTPForm({ phoneNumber }) {
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }
+  };
+  const mutateResendOTP = useMutation({
+    mutationFn: getOtp,
+  });
+  const resendOTP = async (e) => {
+    e.preventDefault();
+    try {
+      const data = await mutateResendOTP.mutateAsync({ phoneNumber });
+      console.log(data);
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+    }
+    setMinutes(1);
+    setSeconds(30);
   };
   useEffect(() => {
     const interval = setInterval(() => {
@@ -67,9 +81,10 @@ function CheckOTPForm({ phoneNumber }) {
             <button
               className="text-sm mt-1 w-full flex"
               disabled={seconds > 0 || minutes > 0}
+              onClick={(e) => resendOTP(e)}
             >
               {seconds > 0 || minutes > 0 ? (
-                <span className="flex">
+                <span className="flex text-gray-400">
                   ارسال مجدد کد تا
                   {
                     <p className="px-1">
