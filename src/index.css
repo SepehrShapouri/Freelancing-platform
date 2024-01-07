@@ -114,7 +114,7 @@
     @apply relative bg-white px-6 pt-10 pb-9 shadow-xl mx-auto w-full max-w-md rounded-2xl mt-44 space-y-3
   }
   .OTPform{
-    @apply space-y-5 flex flex-col items-center
+    @apply space-y-5 flex flex-col items-center 
   }
 }
 
@@ -127,7 +127,11 @@ body {
   user-select: none;
   background-color: rgb(var(--background-app-rgb));
 }
-
+/* .otpformwrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+} */
 * {
   box-sizing: border-box;
   scroll-behavior: smooth;

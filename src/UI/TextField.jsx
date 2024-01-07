@@ -11,7 +11,7 @@ function TextField({label,name,value,onChange,type}) {
         className="textField__input"
         name={name}
         value={value}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={onChange}
       />
     </>
   );
