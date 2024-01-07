@@ -16,7 +16,7 @@ function SendOTPForm({ setStep,phoneNumber,onChange}) {
     try {
       const data = await mutateAsync({ phoneNumber });
       setStep(2);
-      console.log(data);
+      toast.success(data.message)
     } catch (error) {
       console.log(error);
     }

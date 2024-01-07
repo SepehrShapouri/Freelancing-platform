@@ -4,8 +4,8 @@ import OTPInput from "react-otp-input";
 import { useMutation } from "@tanstack/react-query";
 import { checkOtp, getOtp } from "../services/authServices";
 import toast from "react-hot-toast";
-
-function CheckOTPForm({ phoneNumber }) {
+import { IoMdArrowRoundBack } from "react-icons/io";
+function CheckOTPForm({ phoneNumber, setStep }) {
   const [otp, setOtp] = useState();
   const [minutes, setMinutes] = useState(1);
   const [seconds, setSeconds] = useState(30);
@@ -14,11 +14,12 @@ function CheckOTPForm({ phoneNumber }) {
   });
   const checkOtpHandler = async (e) => {
     e.preventDefault();
+    if(!otp) toast.error("لطفا کد تایید را وارد کنید")
     try {
       const data = await mutateAsync({ phoneNumber, otp });
       toast.success(data.message);
     } catch (error) {
-      toast.error(error?.response?.data?.message);
+        toast.error(error.response.data.message)
     }
   };
   const mutateResendOTP = useMutation({
@@ -58,7 +59,12 @@ function CheckOTPForm({ phoneNumber }) {
   return (
     <div className="container">
       <div className="OTPformWrapper otpformwrapper">
-        <h3 className="text-xl font-semibold">ورود | ثبت نام</h3>
+        <h3 className="text-xl font-semibold flex w-full justify-between">
+          ورود | ثبت نام
+          <button className="text-cyan-900" onClick={() => setStep(1)}>
+            <IoMdArrowRoundBack fontSize={"22px"} />
+          </button>
+        </h3>
         <form className="OTPform" onSubmit={checkOtpHandler}>
           <label className="self-start">
             کد ارسال شده به شماره {phoneNumber} وارد کنید
