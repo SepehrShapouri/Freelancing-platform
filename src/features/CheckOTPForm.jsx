@@ -19,7 +19,7 @@ function CheckOTPForm({ phoneNumber, setStep }) {
       const data = await mutateAsync({ phoneNumber, otp });
       toast.success(data.message);
     } catch (error) {
-        toast.error(error.response.data.message)
+        if(otp) toast.error(error.response.data.message)
     }
   };
   const mutateResendOTP = useMutation({
@@ -65,9 +65,9 @@ function CheckOTPForm({ phoneNumber, setStep }) {
             <IoMdArrowRoundBack fontSize={"22px"} />
           </button>
         </h3>
-        <form className="OTPform" onSubmit={checkOtpHandler}>
+        <form className="OTPform" onSubmit={checkOtpHandler} name="checkOTPForm">
           <label className="self-start">
-            کد ارسال شده به شماره {phoneNumber} وارد کنید
+             کد ارسال شده به شماره {phoneNumber} وارد کنید. <span className="text-sm opacity-50 cursor-pointer hover:text-rose-400 hover:opacity-100" onClick={()=>setStep(1)}>ویرایش؟</span>
           </label>
           <OTPInput
             value={otp}
