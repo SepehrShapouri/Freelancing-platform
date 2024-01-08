@@ -9,7 +9,7 @@ import AppLogo from "../../UI/AppLogo";
 import Loader from "../../UI/Loader";
 function CheckOTPForm({ phoneNumber, setStep }) {
   const [otp, setOtp] = useState();
-  const { checkOtpHandler ,isPending,data} = useCheckOTP();
+  const { checkOtpHandler, isPending, data } = useCheckOTP();
   const { sendOTPHandler } = useSendOTP();
   const resendOTP = async (e) => {
     sendOTPHandler(e, phoneNumber, setStep);
