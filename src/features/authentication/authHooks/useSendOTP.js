@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import { getOtp } from "../../services/authServices";
+import { getOtp } from "../../../services/authServices";
 
 export function useSendOTP(){
     const { isPending, error, data, mutateAsync } = useMutation({
@@ -18,5 +18,5 @@ export function useSendOTP(){
         }
         console.log(phoneNumber)
       };
-      return {sendOTPHandler,isPending}
+      return {sendOTPHandler,isPending,data,error}
 }

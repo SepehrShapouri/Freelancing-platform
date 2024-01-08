@@ -8,8 +8,9 @@ function TextField({label,name,value,onChange,type}) {
       </label>
       <input
         type={type}
-        className="textField__input"
+        className={` textField__input`}
         name={name}
+        id={name}
         value={value}
         onChange={onChange}
       />

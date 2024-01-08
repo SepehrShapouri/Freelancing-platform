@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import VerifyButton from "../../UI/VerifyButton";
 import OTPInput from "react-otp-input";
 import { IoMdArrowRoundBack } from "react-icons/io";
-import { useSendOTP } from "../authHooks/useSendOTP";
-import { useCheckOTP } from "../authHooks/useCheckOTP";
+import { useSendOTP } from "./authHooks/useSendOTP";
+import { useCheckOTP } from "./authHooks/useCheckOTP";
 import OTPCoundown from "../../UI/OTPCoundown";
 import AppLogo from "../../UI/AppLogo";
+import Loader from "../../UI/Loader";
 function CheckOTPForm({ phoneNumber, setStep }) {
   const [otp, setOtp] = useState();
-  const { checkOtpHandler } = useCheckOTP();
+  const { checkOtpHandler ,isPending,data} = useCheckOTP();
   const { sendOTPHandler } = useSendOTP();
   const resendOTP = async (e) => {
     sendOTPHandler(e, phoneNumber, setStep);
@@ -52,9 +53,13 @@ function CheckOTPForm({ phoneNumber, setStep }) {
             }}
           />
           <OTPCoundown resendOTP={resendOTP} />
-          <span>
-            <VerifyButton text="تایید" width="w-80" marginTop="mt-1" />
-          </span>
+          <div>
+            {isPending ? (
+              <Loader />
+            ) : (
+              <VerifyButton text=" تایید" width="w-80" />
+            )}
+          </div>
         </form>
       </div>
     </div>
