@@ -5,6 +5,7 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import { useSendOTP } from "../authHooks/useSendOTP";
 import { useCheckOTP } from "../authHooks/useCheckOTP";
 import OTPCoundown from "../../UI/OTPCoundown";
+import AppLogo from "../../UI/AppLogo";
 function CheckOTPForm({ phoneNumber, setStep }) {
   const [otp, setOtp] = useState();
   const { checkOtpHandler } = useCheckOTP();
@@ -13,7 +14,8 @@ function CheckOTPForm({ phoneNumber, setStep }) {
     sendOTPHandler(e, phoneNumber, setStep);
   };
   return (
-    <div className="container">
+    <div className="container flex flex-col items-center">
+      <AppLogo />
       <div className="OTPformWrapper otpformwrapper">
         <h3 className="text-xl font-semibold flex w-full justify-between">
           ورود | ثبت نام

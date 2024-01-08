@@ -3,15 +3,20 @@ import VerifyButton from "../../UI/VerifyButton";
 import TextField from "../../UI/TextField";
 import Loader from "../../UI/Loader";
 import { useSendOTP } from "../authHooks/useSendOTP";
+import AppLogo from "../../UI/AppLogo";
 
-function SendOTPForm({ setStep,phoneNumber,onChange}) {
-const {isPending,sendOTPHandler} = useSendOTP()
+function SendOTPForm({ setStep, phoneNumber, onChange }) {
+  const { isPending, sendOTPHandler } = useSendOTP();
   return (
-    <div className="container">
+    <div className="container flex flex-col items-center">
+        <AppLogo />
       <div className="OTPformWrapper">
         <h3 className="text-xl font-semibold">ورود | ثبت نام</h3>
         <p className="text-l">خوش آمدید!</p>
-        <form className="OTPform" onSubmit={(e)=>sendOTPHandler(e,phoneNumber,setStep)}>
+        <form
+          className="OTPform"
+          onSubmit={(e) => sendOTPHandler(e, phoneNumber, setStep)}
+        >
           <TextField
             label="لطفا شماره موبایل خود را وارد کنید"
             type="text"
@@ -21,7 +26,7 @@ const {isPending,sendOTPHandler} = useSendOTP()
           />
           <div>
             {isPending ? (
-              <Loader/>
+              <Loader />
             ) : (
               <VerifyButton text="ارسال کد تایید" width="w-80" />
             )}

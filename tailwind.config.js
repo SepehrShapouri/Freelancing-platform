@@ -51,6 +51,7 @@ export default {
       },
       fontFamily: {
         sans: ["Vazir", ...fontFamily.sans],
+        roboto:['Roboto',...fontFamily.sans]
       },
     },
   },
