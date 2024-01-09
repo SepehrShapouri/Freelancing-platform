@@ -6,8 +6,10 @@ import AuthContainer from "../features/authentication/AuthContainer";
 
 function Auth() {
   return (
-    <div className="container">
-      <AuthContainer />
+    <div className="container xl:max-w-screen-xl">
+      <div className="container">
+        <AuthContainer />
+      </div>
     </div>
   );
 }

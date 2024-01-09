@@ -8,19 +8,23 @@ import { Toaster } from "react-hot-toast";
 import CompleteProfile from "./pages/CompleteProfile";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
+import AppLayout from "./UI/AppLayout";
+import Owner from "./pages/Owner";
 function App() {
   const queryClient = new QueryClient();
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="container xl:max-w-screen-xl">
         <Toaster toastOptions={{ duration: 3300 }} />
         <Routes>
           <Route path="/auth" element={<Auth />} />
           <Route path="/complete-profile" element={<CompleteProfile />} />
+
+          <Route element={<AppLayout/>}>
+            <Route path="/owner" element={<Owner/>}/>
+          </Route>
           <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </div>
     </QueryClientProvider>
   );
 }

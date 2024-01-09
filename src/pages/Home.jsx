@@ -2,7 +2,7 @@ import React from 'react'
 
 function Home() {
   return (
-    <div>
+    <div className='container xl:max-w-screen-xl'>
         
     </div>
   )
