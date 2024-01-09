@@ -1,22 +1,18 @@
 import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
+import Sidebar from "./Sidebar";
+import Header from "./Header";
 
 function AppLayout() {
-  const [toggleSidebar, setToggleSidebar] = useState(false);
   return (
-    <div className="flex flex-col h-screen max-h-screen-xl max-w-screen-xl">
-      <div className="bg-red-100 h-14">header</div>
-      <div className="h-full flex relative">
-        <div
-          className={`bg-red-200 h-full ${
-            toggleSidebar ? "w-4/12 z-10 opacity-65" : "w-2/12"
-          } transition-all ease-in sm:w-2/12`}
-          onClick={() => setToggleSidebar((prev) => !prev)}
-        >
-          sidebar
-        </div>
-        <div className="bg-red-300 w-10/12 z-0">
-          <Outlet />
+    <div className="flex max-h-screen h-screen">
+      <div className="flex flex-col h-full w-full">
+        <Header />
+        <div className="flex flex-row w-full h-full">
+          <Sidebar />
+          <div className="bg-cyan-100 w-full">
+            <Outlet />
+          </div>
         </div>
       </div>
     </div>
