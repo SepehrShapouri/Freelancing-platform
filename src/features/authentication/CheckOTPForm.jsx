@@ -13,6 +13,7 @@ function CheckOTPForm({ phoneNumber, setStep }) {
   const { sendOTPHandler } = useSendOTP();
   const resendOTP = async (e) => {
     sendOTPHandler(e, phoneNumber, setStep);
+    setOtp("")
   };
   return (
     <div className="container flex flex-col items-center">

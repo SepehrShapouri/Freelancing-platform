@@ -1,9 +1,31 @@
 import axios from "axios";
-
+const BASE_URL = "http://localhost:5000/api";
 const app = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: BASE_URL,
   withCredentials: true,
 });
+app.interceptors.request.use(
+  (res) => res,
+  (err) => Promise.reject(err)
+);
+app.interceptors.response.use(
+  (res) => res,
+  async (err) => {
+    const originalConfig = err.config;
+    console.log(err.config)
+    if (err.response.status === 404 && originalConfig._retry) {
+      try {
+        const { data } = await axios.get(`${BASE_URL}/user/refresh-token`, {
+          withCredentials: true,
+        });
+        console.log(data)
+        if (data) return app(originalConfig);
+      } catch (error) {
+        return Promise.reject(error);
+      }
+    }
+  }
+);
 const http = {
   get: app.get,
   post: app.post,
@@ -11,4 +33,4 @@ const http = {
   put: app.put,
   patch: app.patch,
 };
-export default http
+export default http;
