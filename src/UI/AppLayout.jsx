@@ -10,7 +10,7 @@ function AppLayout() {
         <Header />
         <div className="flex flex-row w-full h-full">
           <Sidebar />
-          <div className="bg-cyan-100 w-full h-screen">
+          <div>
             <Outlet />
           </div>
         </div>
