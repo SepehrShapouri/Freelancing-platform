@@ -124,7 +124,7 @@
     @apply accent-cyan-800 
   }
   .header__icon{
-    @apply text-cyan-800 text-xl sm:text-3xl
+    @apply text-cyan-800 text-xl sm:text-3xl font-bold
   }
 }
 

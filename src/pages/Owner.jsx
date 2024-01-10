@@ -2,7 +2,8 @@ import React from 'react'
 
 function Owner() {
   return (
-    <div>Owner</div>
+    <div className='p-3 h-full'>
+    </div>
   )
 }
 
