@@ -126,6 +126,12 @@
   .header__icon{
     @apply text-cyan-800 text-xl sm:text-3xl font-bold
   }
+  .sidebar-logo{
+    @apply text-xl text-cyan-950 
+  }
+  .sidebar-logo_wrapper{
+    @apply hover:h-[34px] hover:w-[34px] transition-all ease-in hover:bg-slate-100 flex items-center justify-center
+  }
 }
 
 html,
