@@ -13,7 +13,7 @@ import SidebarContainer, { SidebarItem } from "./SidebarContainer";
 function Sidebar() {
   const [theme, setTheme] = useState("light");
   return (
-    <div className="flex">
+    <div className="flex max-h-[1024px]">
       <SidebarContainer>
                 <SidebarItem icon={<Home size={20} />} text="خانه" id={1} />
         <SidebarItem

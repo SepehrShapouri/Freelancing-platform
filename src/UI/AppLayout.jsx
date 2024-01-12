@@ -9,7 +9,7 @@ function AppLayout() {
   return (
     <div className="flex max-h-screen h-screen">
       <div className="flex flex-col h-full w-full">
-        <Header />
+        <div ><Header /></div>
         <div className="flex flex-row w-full h-full">
             <Sidebar/>
           <div>
