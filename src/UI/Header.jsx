@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { FaReact } from "react-icons/fa";
+import useUser from "../features/authentication/authHooks/useUser";
 function Header() {
+    const {data} = useUser()
   return (
     <div className="h-[70px] w-full border-b flex items-center justify-between p-4">
         <div className="flex items-center">
