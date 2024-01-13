@@ -63,13 +63,13 @@ function SidebarContainer({children}) {
 
 export default SidebarContainer
 
-export function SidebarItem({ text, icon, id, onClick }) {
+export function SidebarItem({ text, icon, id, onClick ,path}) {
   const { expanded, activeTab, setActiveTab } = useContext(SidebarContext);
   const handleActiveTab = (tabId) => {
     setActiveTab(tabId);
   };
   return (
-    <NavLink
+    <NavLink to={path}
       className={` max-h-[40px] relative flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors group ${
         activeTab == id
           ? "bg-gradient-to-tr from-sky-200 to-sky-100 text-cyan-800"

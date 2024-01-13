@@ -20,8 +20,9 @@ function Sidebar() {
           icon={<LayoutDashboard size={20} />}
           text="داشبورد"
           id={2}
+          path="owner-dashboard"
         />
-        <SidebarItem icon={<StickyNote size={20} />} text=" پروژه ها " id={3} />
+        <SidebarItem icon={<StickyNote size={20} />} text=" پروژه ها " id={3} path="projects" />
         <SidebarItem icon={<User size={20} />} text="پروفایل" id={4} />
         <hr className="mt-5" />
         <SidebarItem icon={<Settings size={20} />} text="تنظیمات" id={5} />
