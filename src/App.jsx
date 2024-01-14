@@ -21,7 +21,6 @@ function App() {
         <Routes>
           <Route path="/auth" element={<Auth />} />
           <Route path="/complete-profile" element={<CompleteProfile />} />
-
           <Route path="/owner" element={<AppLayout/>}>
             <Route index element={<Navigate to="owner-dashboard"/>} />
             <Route path="owner-dashboard" element={<OwnerDashboard/>}/>

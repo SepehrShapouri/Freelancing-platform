@@ -9,7 +9,6 @@ function SendOTPForm({ setStep, phoneNumber, onChange }) {
   const { isPending, sendOTPHandler } = useSendOTP();
   return (
     <div className="container flex flex-col items-center">
-        <AppLogo />
       <div className="OTPformWrapper">
         <h3 className="text-xl font-semibold">ورود | ثبت نام</h3>
         <p className="text-l">خوش آمدید!</p>

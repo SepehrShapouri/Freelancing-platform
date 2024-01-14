@@ -8,7 +8,7 @@ function RadioInput({ label, name, id, onChange, value, checked }) {
         name={name}
         id={id}
         value={value}
-        className="form-radio text-cyan-900 focus:ring-0 ml-2"
+        className="form-radio text-cyan-900 focus:ring-0 ml-2 outline-none ring-0 border-none"
         onChange={onChange}
         checked={checked}
       />

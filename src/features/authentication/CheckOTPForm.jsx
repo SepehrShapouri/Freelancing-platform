@@ -17,7 +17,6 @@ function CheckOTPForm({ phoneNumber, setStep }) {
   };
   return (
     <div className="container flex flex-col items-center">
-      <AppLogo />
       <div className="OTPformWrapper otpformwrapper">
         <h3 className="text-xl font-semibold flex w-full justify-between">
           ورود | ثبت نام
