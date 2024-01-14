@@ -7,10 +7,11 @@ export function useCompleteProfile() {
     mutationFn: completeProfile,
   });
   const navigate = useNavigate();
-  const completeProfileHandler = async (name, email, role) => {
+  const completeProfileHandler = async (name, email, role,gender) => {
     try {
-      const { user, message } = await mutateAsync({ name, email, role});
+      const { user, message } = await mutateAsync({ name, email, role,gender});
       toast.success(message);
+      console.log(user)
       if (user.status !== 2) {
         navigate("/");
         toast("پروفایل شما در انتظار تایید میباشد", {

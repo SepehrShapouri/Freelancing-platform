@@ -13,12 +13,13 @@ function CompleteProfileForm() {
     name: "",
     lastName: "",
   });
+  const [gender,setGender] = useState(null)
   const { isPending, data, completeProfileHandler } = useCompleteProfile();
   const [email, setEmail] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
     const name = `${fullName.name} ${fullName.lastName}`;
-    completeProfileHandler(name, email, role);
+    completeProfileHandler(name, email, role,gender);
   };
   return (
     <div className="container flex flex-col items-center">
@@ -74,6 +75,24 @@ function CompleteProfileForm() {
               onChange={(e) => setRole(e.target.value)}
               value="FREELANCER"
               checked={role == "FREELANCER"}
+            />
+          </div>
+          <div className="flex w-full justify-evenly">
+            <RadioInput
+              label="مرد"
+              name="GENDER"
+              id="MALE"
+              onChange={(e) => setGender(e.target.value)}
+              value="MALE"
+              checked={gender == "MALE"}
+            />
+            <RadioInput
+              label="زن"
+              name="GENDER"
+              id="FEMALE"
+              onChange={(e) => setGender(e.target.value)}
+              value="FEMALE"
+              checked={gender == "FEMALE"}
             />
           </div>
           <div className="w-full">
