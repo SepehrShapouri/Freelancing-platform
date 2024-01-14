@@ -3,8 +3,6 @@ import { FaReact } from "react-icons/fa";
 import useUser from "../features/authentication/authHooks/useUser";
 import { Link } from "react-router-dom";
 function Header() {
-    const {data} = useUser()
-     console.log(data)
   return (
     <div className="h-[70px] w-full border-b flex items-center justify-between p-4">
         <div className="flex items-center">
