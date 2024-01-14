@@ -11,6 +11,8 @@ import NotFound from "./pages/NotFound";
 import AppLayout from "./UI/AppLayout";
 import OwnerDashboard from "./pages/OwnerDashboard";
 import Projects from "./pages/Projects";
+import SingleProject from "./pages/SingleProject";
+import Profile from "./pages/Profile";
 function App() {
   const queryClient = new QueryClient();
   return (
@@ -24,6 +26,8 @@ function App() {
             <Route index element={<Navigate to="owner-dashboard"/>} />
             <Route path="owner-dashboard" element={<OwnerDashboard/>}/>
             <Route path="projects" element={<Projects/>}/>
+            <Route path="projects/:id" element={<SingleProject/>}/>
+            <Route path="profile" element={<Profile/>}/>
           </Route>
           <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
