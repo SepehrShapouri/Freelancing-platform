@@ -41,6 +41,9 @@ export default {
           50: withOpacity("--color-secondary-50"),
           0: withOpacity("--color-secondary-0"),
         },
+        backdropBrightness:{
+          25:'.25'
+        },
         success: withOpacity("--color-success"),
         warning: withOpacity("--color-warning"),
         error: withOpacity("--color-error"),

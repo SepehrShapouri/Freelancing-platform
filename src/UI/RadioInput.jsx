@@ -1,8 +1,8 @@
 import React from "react";
 
-function RadioInput({ label, name, id, onChange, value, checked }) {
+function RadioInput({ label, name, id, onChange, value, checked ,extraClasses =""}) {
   return (
-    <span className="flex items-center">
+    <span className="flex">
       <input
         type="radio"
         name={name}
@@ -14,7 +14,7 @@ function RadioInput({ label, name, id, onChange, value, checked }) {
       />
       <label
         htmlFor={id}
-        className="hover:text-slate-500 transition ease-in duration-200"
+        className={`hover:text-slate-500 transition ease-in duration-200 ${extraClasses}`}
       >
         {label}
       </label>

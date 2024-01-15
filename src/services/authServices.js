@@ -14,3 +14,6 @@ export function completeProfile(data) {
 export function getUser() {
   return http.get("/user/profile").then(({ data }) => data.data);
 }
+export function setAvatr(data) {
+  return http.patch("/user/set-avatar", data).then(({ data }) => data.data);
+}
