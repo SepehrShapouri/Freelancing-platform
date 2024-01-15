@@ -15,17 +15,16 @@ function Sidebar() {
   return (
     <div className="flex max-h-[1024px]">
       <SidebarContainer>
-                <SidebarItem icon={<Home size={20} />} text="خانه" id={1} />
+                <SidebarItem icon={<Home size={20} />} text="خانه"  />
         <SidebarItem
           icon={<LayoutDashboard size={20} />}
           text="داشبورد"
-          id={2}
           path="owner-dashboard"
         />
-        <SidebarItem icon={<StickyNote size={20} />} text=" پروژه ها " id={3} path="projects" />
-        <SidebarItem icon={<User size={20} />} text="پروفایل" id={4} path="profile"/>
+        <SidebarItem icon={<StickyNote size={20} />} text=" پروژه ها "  path="projects" />
+        <SidebarItem icon={<User size={20} />} text="پروفایل"  path="profile"/>
         <hr className="mt-5" />
-        <SidebarItem icon={<Settings size={20} />} text="تنظیمات" id={5} />
+        <SidebarItem icon={<Settings size={20} />} text="تنظیمات"  />
         <SidebarItem
           icon={theme == "dark" ? <Sun size={20} /> : <Moon size={20} />}
           text="تم"

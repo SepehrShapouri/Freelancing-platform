@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
 import "../App.css";
-import { FaUserCircle } from "react-icons/fa";
 import { ChevronFirst, ChevronLast } from "lucide-react";
 import { CiLogout } from "react-icons/ci";
 import useUser from "../features/authentication/authHooks/useUser";
@@ -10,9 +9,7 @@ import UserAvatar from "./UserAvatar";
 const SidebarContext = createContext("");
 function SidebarContainer({ children }) {
   const [expanded, setExpanded] = useState(false);
-  const [activeTab, setActiveTab] = useState(3);
   const { user, isLoading } = useUser();
-  console.log(isLoading);
   return (
     <>
       <aside className="">
@@ -37,7 +34,7 @@ function SidebarContainer({ children }) {
             </button>
           </div>
           <SidebarContext.Provider
-            value={{ expanded, activeTab, setActiveTab }}
+            value={{ expanded }}
           >
             <ul className="flex-1 px-3">{children}</ul>
           </SidebarContext.Provider>
@@ -67,20 +64,13 @@ function SidebarContainer({ children }) {
 
 export default SidebarContainer;
 
-export function SidebarItem({ text, icon, id, onClick, path }) {
-  const { expanded, activeTab, setActiveTab } = useContext(SidebarContext);
-  const handleActiveTab = (tabId) => {
-    setActiveTab(tabId);
-  };
+export function SidebarItem({ text, icon, onClick, path }) {
+  const { expanded } = useContext(SidebarContext);
   return (
     <NavLink
-      to={path}
-      className={` max-h-[40px] relative flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors group ${
-        activeTab == id
-          ? "bg-gradient-to-tr from-sky-200 to-sky-100 text-cyan-800"
-          : "hover:bg-sky-50 text-gray-600"
-      }`}
-      onClick={onClick ? onClick : () => handleActiveTab(id)}
+    onClick={onClick && onClick}
+    to={path}
+    className={({isActive})=> `max-h-[40px] relative flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors group ${isActive ? "bg-gradient-to-tr from-sky-200 to-sky-100 text-cyan-800": "hover:bg-sky-50 text-gray-600"}`}
     >
       {icon}
       <span
@@ -92,7 +82,7 @@ export function SidebarItem({ text, icon, id, onClick, path }) {
       </span>
       {!expanded && (
         <div
-          className={` w-[60px] flex items-center justify-center absolute right-full rounded-md px-2 py-1 mr-6 bg-sky-100 text-cyan-800 text-sm invisible opacity-20 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0`}
+          className={` w-[60px] flex items-center justify-center absolute right-full rounded-md px-2 py-1 mr-6 bg-sky-100 text-cyan-800 text-sm invisible opacity-20 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0 z-10`}
         >
           {text}
         </div>

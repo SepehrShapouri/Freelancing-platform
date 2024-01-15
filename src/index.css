@@ -133,7 +133,6 @@
     @apply hover:h-[34px] hover:w-[34px] transition-all ease-in hover:bg-slate-100 flex items-center justify-center
   }
 }
-
 html,
 body {
   padding: 0;
