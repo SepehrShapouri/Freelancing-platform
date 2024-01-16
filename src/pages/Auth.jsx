@@ -7,7 +7,7 @@ import AppLogo from "../UI/AppLogo";
 
 function Auth() {
   return (
-    <div className=" xl:max-w-screen-2xl flex flex-col h-screen justify-center items-center  bg-gradient-to-br from-sky-50 to-sky-100">
+    <div className=" xl:max-w-screen-2xl flex flex-col h-screen justify-center items-center  bg-gradient-to-tl from-white to-sky-100">
       <AppLogo/>
       <div className=" mb-20 flex flex-row-reverse md:h-[500px] md:w-[700px] justify-between items-center transition-all ease-in">
         <span className="hidden md:flex relative mr-2">
