@@ -8,6 +8,9 @@ export function useCompleteProfile() {
   });
   const navigate = useNavigate();
   const completeProfileHandler = async (name, email, role,gender) => {
+    if(name || email ||role||gender == "") {
+      toast.error("لطفا تمامی فیلد هارا پر کنید")
+    }
     try {
       const { user, message } = await mutateAsync({ name, email, role,gender});
       toast.success(message);
@@ -22,7 +25,7 @@ export function useCompleteProfile() {
       if (user.role === "FREELANCER") return navigate("/freelancer");
       if (user.role === "owner") return navigate("owner");
     } catch (error) {
-      toast.error(error?.response?.data?.message);
+      // toast.error(error?.response?.data?.message);
     }
   };
   return { isPending, data, completeProfileHandler };
