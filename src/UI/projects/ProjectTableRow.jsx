@@ -2,6 +2,9 @@ import { useState } from "react";
 import ProjectTags from "./ProjectTags";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import truncateText from "../../utils/truncateText";
+import toLocalDateShort from "../../utils/toLocalDateShort";
+import { toPersianNumbersWithComma } from "../../utils/toPersianNumbers";
 
 export default function ProjectTableRow({
   title,
@@ -18,7 +21,7 @@ export default function ProjectTableRow({
         scope="row"
         className="px-6 py-4 font-medium whitespace-nowraw projectTableData"
       >
-        {title}
+        {truncateText(title,10)}
       </th>
       <td className="projectTableData">
         <div className="flex flex-wrap max-w-[200px] gap-2">
@@ -27,9 +30,9 @@ export default function ProjectTableRow({
           ))}
         </div>
       </td>
-      <td className="projectTableData">{budget}</td>
+      <td className="projectTableData">{toPersianNumbersWithComma(budget)}</td>
       <td className="projectTableData">{category.title}</td>
-      <td className="projectTableData">{deadline}</td>
+      <td className="projectTableData">{toLocalDateShort(deadline)}</td>
       <td className="projectTableData">
         {status == "OPEN" ? (
           <span className="badge badge--success">باز</span>
