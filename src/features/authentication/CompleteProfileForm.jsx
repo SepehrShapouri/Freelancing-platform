@@ -23,7 +23,7 @@ function CompleteProfileForm() {
       <AppLogo />
       <div className="flex">
         <div className=" bg-white sm:w-[500px] w-[400px] h-[500px] transition-all shadow-sm sm:rounded-r-3xl sm:rounded-l-none rounded-3xl flex justify-center">
-          <form className="w-full p-6 sm:px-16 sm:py-10 h-[400px] flex flex-col gap-y-6">
+          <form className="w-full p-6 sm:px-16 sm:py-10 h-[500px] flex flex-col gap-y-6 justify-center">
             <CompleteProfileInput
               label="نام"
               placeholder="سپهر"

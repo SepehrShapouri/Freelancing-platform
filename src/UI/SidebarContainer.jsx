@@ -12,7 +12,7 @@ function SidebarContainer({ children }) {
   const { user, isLoading } = useUser();
   return (
     <>
-      <aside className="">
+      <aside className="z-10 overflow-auto">
         <nav className="h-full flex flex-col bg-white border-l shadow-sm">
           <div className="p-4 pb-2 flex justify-between items-center">
             <h1
