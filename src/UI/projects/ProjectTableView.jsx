@@ -1,9 +1,13 @@
 import { IoAddCircle } from "react-icons/io5";
 import useOwnerProjects from "../../features/projects/projectsHooks/useOwnerProjects";
 import ProjectTableRow from "./ProjectTableRow";
-
+const projects = [
+    {id:1,title:"1",description:"1",budget:1,category:{title:"1"},status:"OPEN",tags:["javascript","react","tailwind"],deadline:"2024/12/8",freelancer:"sepehr shapouri"},
+    {id:1,title:"1",description:"1",budget:1,category:{title:"1"},status:"OPEN",tags:["javascript","react","tailwind"],deadline:"2024/12/8",freelancer:""},
+    {id:1,title:"1",description:"1",budget:1,category:{title:"1"},status:"OPEN",tags:["javascript","react","tailwind"],deadline:"2024/12/8",freelancer:"sepehr shapouri"}
+]
 export function ProjectTableView() {
-  const { projects } = useOwnerProjects();
+//   const { projects } = useOwnerProjects();
   return (
     <div className="w-full flex flex-col transition-all items-center sm:px-20 max-h-[1024px]">
       <div className="flex w-full items-center justify-between my-14 px-2">
@@ -19,10 +23,7 @@ export function ProjectTableView() {
           <thead className="text-xs uppercase bg-gray-50">
             <tr>
               <th scope="col" className="px-6 py-3 text-cyan-800">
-                نام پروژه
-              </th>
-              <th scope="col" className="px-6 py-3 text-cyan-800">
-                توضیحات
+                عنوان پروژه
               </th>
               <th className="px-6 py-3 text-cyan-800" scope="col">
                 تگ ها
@@ -36,6 +37,12 @@ export function ProjectTableView() {
               <th scope="col" className="px-6 py-3 text-cyan-800">
                 ددلاین
               </th>
+              <th scope="col" className="px-6 py-3 text-cyan-800">
+                وضعیت
+              </th>
+              <th scope="col" className="pc-6 py-4 text-cyan-800">
+                نام فریلنسر
+              </th>
               <th scope="col" className="pc-6 py-4 text-cyan-800">
                 تنظیمات
               </th>
@@ -44,12 +51,15 @@ export function ProjectTableView() {
           <tbody>
             {projects.map((p) => (
               <ProjectTableRow
+              key={p.id}
                 title={p.title}
-                desc={p.desc}
+                desc={p.description}
                 budget={p.budget}
                 deadline={p.deadline}
                 category={p.category}
                 tags={p.tags}
+                status={p.status}
+                freelancer={p.freelancer}
               />
             ))}
           </tbody>

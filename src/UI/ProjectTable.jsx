@@ -4,7 +4,10 @@ import useOwnerProjects from "../features/projects/projectsHooks/useOwnerProject
 import { IoAddCircle } from "react-icons/io5";
 import { ProjectTableView } from "./projects/ProjectTableView";
 function ProjectTable() {
-  const { isLoading, projects } = useOwnerProjects();
+  const { isLoading } = useOwnerProjects();
+  const projects = [
+    {id:1,title:"1",description:"1",budget:1,category:{title:"1"},status:"OPEN",tags:["javascript","react","tailwind"]}
+]
   return (
     <div className="h-full w-full flex max-h-[1024px]">
       {isLoading ? (
@@ -17,7 +20,7 @@ function ProjectTable() {
             پروژه فعال یافت نشد!
           </p>
           <button className="flex items-center  bg-cyan-800 text-white px-4 h-[40px] py-2 justify-between w-[120px] sm:w-[150px] sm:text-lg text-sm rounded-xl hover:bg-cyan-600 transition-all">
-            پروژه جدید <IoAddCircle />{" "}
+            پروژه جدید <IoAddCircle />
           </button>
         </div>
       ) : (

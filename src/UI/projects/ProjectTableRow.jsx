@@ -1,15 +1,17 @@
 import { useState } from "react";
-import { CiRead, CiUnread } from "react-icons/ci";
+import ProjectTags from "./ProjectTags";
+import { FaEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 
 export default function ProjectTableRow({
   title,
-  desc,
   deadline,
   budget,
   tags,
   category,
+  status,
+  freelancer,
 }) {
-  const [openDesc, setOpenDesc] = useState(false);
   return (
     <tr className="bg-white border-b">
       <th
@@ -18,23 +20,30 @@ export default function ProjectTableRow({
       >
         {title}
       </th>
-      <td
-        className="projectTableData flex items-center justify-center border-none"
-        onClick={() => setOpenDesc((prev) => !prev)}
-      >
-        {openDesc ? (
-          <CiUnread className="read-desc-icon" />
+      <td className="projectTableData">
+        <div className="flex flex-wrap max-w-[200px] gap-2">
+          {tags.map((t) => (
+            <ProjectTags tags={t} />
+          ))}
+        </div>
+      </td>
+      <td className="projectTableData">{budget}</td>
+      <td className="projectTableData">{category.title}</td>
+      <td className="projectTableData">{deadline}</td>
+      <td className="projectTableData">
+        {status == "OPEN" ? (
+          <span className="badge badge--success">باز</span>
         ) : (
-          <CiRead className="read-desc-icon" />
+          <span className="badge badge--danger">بسته</span>
         )}
       </td>
       <td className="projectTableData">
-        <ProjectTags tags={tags} />
+        <span>{freelancer ? freelancer : "-"}</span>
       </td>
-      <td className="projectTableData">{budget}</td>
-      <td className="projectTableData">{category}</td>
-      <td className="projectTableData">{deadline}</td>
-      <td className="projectTableData"></td>
+      <td className="projectTableData flex border-none justify-between">
+        <FaEdit className="text-xl text-emerald-500 hover:opacity-55 transition-all  " />
+        <MdDelete className="text-xl text-rose-500 hover:opacity-55 transition-all " />
+      </td>
     </tr>
   );
 }
