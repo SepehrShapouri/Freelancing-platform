@@ -138,6 +138,9 @@
   .read-desc-icon{
     @apply text-cyan-600 hover:text-cyan-300 transition-all ease-in text-2xl
   }
+  .project-table-wrapper{
+    @apply relative overflow-x-auto shadow-md sm:rounded-lg w-[300px] sm:w-[600px] md:w-[800px] lg:w-[1024px] transition-all max-h-[1024px]
+  }
 }
 html,
 body {

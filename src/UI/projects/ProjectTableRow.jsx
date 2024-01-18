@@ -5,6 +5,7 @@ import { MdDelete } from "react-icons/md";
 import truncateText from "../../utils/truncateText";
 import toLocalDateShort from "../../utils/toLocalDateShort";
 import { toPersianNumbersWithComma } from "../../utils/toPersianNumbers";
+import Table from "../Table";
 
 export default function ProjectTableRow({
   title,
@@ -16,7 +17,7 @@ export default function ProjectTableRow({
   freelancer,
 }) {
   return (
-    <tr className="bg-white border-b">
+    <Table.row className="bg-white border-b">
       <th
         scope="row"
         className="px-6 py-4 font-medium whitespace-nowraw projectTableData"
@@ -34,7 +35,7 @@ export default function ProjectTableRow({
       <td className="projectTableData">{category.title}</td>
       <td className="projectTableData">{toLocalDateShort(deadline)}</td>
       <td className="projectTableData">
-        {status == "OPEN" ? (
+        {status == "OPgEN" ? (
           <span className="badge badge--success">باز</span>
         ) : (
           <span className="badge badge--danger">بسته</span>
@@ -47,6 +48,6 @@ export default function ProjectTableRow({
         <FaEdit className="text-xl text-emerald-500 hover:opacity-55 transition-all  " />
         <MdDelete className="text-xl text-rose-500 hover:opacity-55 transition-all " />
       </td>
-    </tr>
+    </Table.row>
   );
 }

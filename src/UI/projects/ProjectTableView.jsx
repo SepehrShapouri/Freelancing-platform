@@ -1,6 +1,8 @@
 import { IoAddCircle } from "react-icons/io5";
 import useOwnerProjects from "../../features/projects/projectsHooks/useOwnerProjects";
 import ProjectTableRow from "./ProjectTableRow";
+import Table from "../Table";
+import AddProjectBtn from "./AddProjectBtn";
 const projects = [
     {id:1,title:"1dfhdfhshsdhsdghkgjhggjgjgjhlggkjjkgjkgjkg",description:"1",budget:1,category:{title:"1"},status:"OPEN",tags:["javascript","react","tailwind"],deadline:"2024/12/8",freelancer:"sepehr shapouri"},
     {id:1,title:"1",description:"1",budget:1500000,category:{title:"1"},status:"OPEN",tags:["javascript","react","tailwind"],deadline:"2024/12/8",freelancer:""},
@@ -14,14 +16,12 @@ export function ProjectTableView() {
         <h2 className="text-cyan-800 text-xl sm:text-2xl font-bold">
           پروژه های شما
         </h2>
-        <button className="flex items-center bg-cyan-800 text-white px-4 py-2 justify-between w-[120px] sm:w-[150px] sm:text-lg text-sm rounded-xl hover:bg-cyan-600 transition-all">
-          پروژه جدید <IoAddCircle />
-        </button>
+        <AddProjectBtn/>
       </div>
-      <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-[300px] sm:w-[600px] md:w-[800px] lg:w-[1024px] transition-all max-h-[1024px]">
-        <table className="w-full text-sm text-left rtl:text-right">
-          <thead className="text-xs uppercase bg-gray-50">
-            <tr>
+      <div className="project-table-wrapper">
+        <Table>
+          <Table.header>
+            <Table.row>
               <th scope="col" className="px-6 py-3 text-cyan-800">
                 عنوان پروژه
               </th>
@@ -46,9 +46,9 @@ export function ProjectTableView() {
               <th scope="col" className="pc-6 py-4 text-cyan-800">
                 تنظیمات
               </th>
-            </tr>
-          </thead>
-          <tbody>
+            </Table.row>
+          </Table.header>
+          <Table.body>
             {projects.map((p) => (
               <ProjectTableRow
               key={p.id}
@@ -62,8 +62,8 @@ export function ProjectTableView() {
                 freelancer={p.freelancer}
               />
             ))}
-          </tbody>
-        </table>
+          </Table.body>
+        </Table>
       </div>
     </div>
   );
