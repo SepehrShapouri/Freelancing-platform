@@ -52,14 +52,13 @@ export default Profile;
 function PickAvatarModal({ setToggleAvatarModal }) {
   const { user } = useUser();
   const gender = user.gender;
-  const { setAvatarHandler, isPending, data, error } = useSetAvatar();
+  const { setAvatarHandler} = useSetAvatar();
   let avatars = gender == "MALE" ? maleAvatars : femaleAvatars;
   const [activeAvatar, setActiveAvatar] = useState();
   const activeAvatarUrl = avatars.find((avatar) => avatar.id == activeAvatar);
   const setAvatar = () => {
     setToggleAvatarModal(false);
     setAvatarHandler(activeAvatarUrl.url);
-    window.location.reload();
   };
   return (
     <div className="h-full w-full absolute transition-all">

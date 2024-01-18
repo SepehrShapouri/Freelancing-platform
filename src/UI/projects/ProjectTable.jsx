@@ -5,18 +5,7 @@ import { ProjectTableView } from "./ProjectTableView";
 import Empty from "../Empty";
 import AddProjectBtn from "./AddProjectBtn";
 function ProjectTable() {
-  const { isLoading } = useOwnerProjects();
-  const projects = [
-    {
-      id: 1,
-      title: "1",
-      description: "1",
-      budget: 1,
-      category: { title: "1" },
-      status: "OPEN",
-      tags: ["javascript", "react", "tailwind"],
-    },
-  ];
+  const { isLoading,projects } = useOwnerProjects();
   if (isLoading) return <Loader />;
   if (projects.length < 1)
     return (

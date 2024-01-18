@@ -9,6 +9,5 @@ export default function useUser() {
   });
 
   const { user } =  data || {}
-  console.log(user)
   return { isLoading, user };
 }
