@@ -1,13 +1,16 @@
 import { useState } from "react";
 import ProjectTags from "./ProjectTags";
-import { FaEdit } from "react-icons/fa";
+import { FaEdit, FaTrash } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import truncateText from "../../utils/truncateText";
 import toLocalDateShort from "../../utils/toLocalDateShort";
 import { toPersianNumbersWithComma } from "../../utils/toPersianNumbers";
 import Table from "../Table";
+import Modal from "../Modal";
+import ConfirmDeleteProject from "./ConfirmDeleteProject";
 
 export default function ProjectTableRow({
+  id,
   title,
   deadline,
   budget,
@@ -16,18 +19,20 @@ export default function ProjectTableRow({
   status,
   freelancer,
 }) {
+  const [isEditOpen, setIsEditOpen] = useState();
+  const [isDeleteOpen,setIsDeleteOpen] = useState()
   return (
     <Table.row className="bg-white border-b">
       <th
         scope="row"
         className="px-6 py-4 font-medium whitespace-nowraw projectTableData"
       >
-        {truncateText(title,10)}
+        {truncateText(title, 10)}
       </th>
       <td className="projectTableData">
         <div className="flex flex-wrap max-w-[200px] gap-2">
-          {tags.map((t) => (
-            <ProjectTags tags={t} />
+          {tags.map((t, index) => (
+            <ProjectTags tags={t} key={index} />
           ))}
         </div>
       </td>
@@ -35,7 +40,7 @@ export default function ProjectTableRow({
       <td className="projectTableData">{category.title}</td>
       <td className="projectTableData">{toLocalDateShort(deadline)}</td>
       <td className="projectTableData">
-        {status == "OPgEN" ? (
+        {status == "OPEN" ? (
           <span className="badge badge--success">باز</span>
         ) : (
           <span className="badge badge--danger">بسته</span>
@@ -44,9 +49,27 @@ export default function ProjectTableRow({
       <td className="projectTableData">
         <span>{freelancer ? freelancer : "-"}</span>
       </td>
-      <td className="projectTableData flex border-none justify-between">
-        <FaEdit className="text-xl text-emerald-500 hover:opacity-55 transition-all  " />
-        <MdDelete className="text-xl text-rose-500 hover:opacity-55 transition-all " />
+      <td className="projectTableData">
+        <div className="flex gap-y-4 justify-between">
+          <>
+            <button onClick={() => setIsEditOpen(true)}>
+              <FaEdit className="text-lg hover:opacity-65 transition-all text-emerald-500" />
+            </button>
+            <Modal
+              open={isEditOpen}
+              title="my modal"
+              onClose={() => setIsEditOpen(false)}
+            ></Modal>
+          </>
+          <>
+          <button onClick={()=>setIsDeleteOpen(true)}>
+            <FaTrash className="text-lg hover:opacity-65 transition-all text-error" />
+          </button>
+          <Modal open={isDeleteOpen} onClose={()=>setIsDeleteOpen(false)} title={`حذف ${truncateText(title)}`}>
+            <ConfirmDeleteProject resourceName={title} onClose={()=>setIsDeleteOpen(false)} onConfirm={()=>{}}/>
+          </Modal>
+          </>
+        </div>
       </td>
     </Table.row>
   );

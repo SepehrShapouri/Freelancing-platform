@@ -1,7 +1,7 @@
 import React from "react";
 
 function Table({ children }) {
-  return <table className="w-full text-sm">{children}</table>;
+  return <table className=" text-sm">{children}</table>;
 }
 function TableHeader({ children }) {
   return <thead className="text-xs  bg-gray-50">{children}</thead>;
