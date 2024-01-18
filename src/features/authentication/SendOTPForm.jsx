@@ -6,7 +6,7 @@ import { useSendOTP } from "./authHooks/useSendOTP";
 import AppLogo from "../../UI/AppLogo";
 
 function SendOTPForm({ setStep, phoneNumber, onChange }) {
-  const { isPending, sendOTPHandler } = useSendOTP();
+  const { isPending,sendOTP} = useSendOTP(setStep);
   return (
     <div className="container flex flex-col items-center">
       <div className="OTPformWrapper">
@@ -14,7 +14,7 @@ function SendOTPForm({ setStep, phoneNumber, onChange }) {
         <p className="text-l">خوش آمدید!</p>
         <form
           className="OTPform"
-          onSubmit={(e) => sendOTPHandler(e, phoneNumber, setStep)}
+        onSubmit={(e) => {sendOTP({phoneNumber},{onSuccess:()=>setStep(2)}),e.preventDefault()}}
         >
           <TextField
             label="لطفا شماره موبایل خود را وارد کنید"

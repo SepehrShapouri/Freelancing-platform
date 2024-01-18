@@ -67,7 +67,7 @@ export default function ProjectTableRow({ project }) {
               <ConfirmDeleteProject
                 resourceName={project.title}
                 onClose={() => setIsDeleteOpen(false)}
-                onConfirm={() => removeProject(project._id)}
+                onConfirm={() => removeProject(project._id,{onSuccess:()=>setIsDeleteOpen(false)})}
               />
             </Modal>
           </>
