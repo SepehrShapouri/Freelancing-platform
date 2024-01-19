@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteProjectApi } from "../../services/projectServices";
+import { deleteProjectApi } from "../../../services/projectServices";
 import toast from "react-hot-toast";
 
 export default function useRemoveProject() {

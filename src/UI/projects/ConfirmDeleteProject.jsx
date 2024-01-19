@@ -8,12 +8,12 @@ function ConfirmDeleteProject({resourceName,onClose,onConfirm,disabled}) {
         <button className="hover:opacity-65 
         transition-all bg-error 
         py-1 px-4 text-lg rounded-lg
-         text-white font-bold" onClick={onConfirm}>حذف</button>
+         text-white font-bold" onClick={onConfirm} disabled={disabled}>حذف</button>
         <button className="hover:opacity-65
          transition-all 
           bg-cyan-900  py-1 px-4 
           text-lg rounded-lg text-white
-           font-bold" onClick={onClose}>انصراف</button>
+           font-bold" onClick={onClose} disabled={disabled}>انصراف</button>
     </div>
 </div>
   )
