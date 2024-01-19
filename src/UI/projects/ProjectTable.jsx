@@ -21,7 +21,7 @@ function ProjectTable() {
         )}
           <AddProjectBtn onClick={()=>setIsFormOpen(true)}/>
       </div>
-      <CreateProjectForm open={isFormOpen}/>
+      <CreateProjectForm open={isFormOpen} onClose={()=>setIsFormOpen(false)}/>
       {projects.length ? <ProjectTableView/> : null}
     </div>
   );
