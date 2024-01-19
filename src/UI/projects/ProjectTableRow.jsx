@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import ProjectTags from "./ProjectTags";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import truncateText from "../../utils/truncateText";
@@ -12,7 +12,7 @@ import useRemoveProject from "../../features/projects/useRemoveProject";
 export default function ProjectTableRow({ project }) {
   const [isEditOpen, setIsEditOpen] = useState();
   const [isDeleteOpen, setIsDeleteOpen] = useState();
-  const { removeProject, isDeleting } = useRemoveProject();
+  const { removeProject, isDeleting } = useRemoveProject(); 
   return (
     <Table.row className="bg-white border-b">
       <th
