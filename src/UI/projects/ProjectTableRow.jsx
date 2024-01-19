@@ -8,7 +8,7 @@ export default function ProjectTableRow({ project }) {
     <Table.row className="bg-white border-b">
       <th
         scope="row"
-        className="px-6 py-4 font-medium whitespace-nowraw projectTableData"
+        className="font-medium whitespace-nowrap projectTableData"
       >
         {truncateText(project.title, 10)}
       </th>

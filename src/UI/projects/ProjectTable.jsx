@@ -4,7 +4,7 @@ import useOwnerProjects from "../../features/projects/projectsHooks/useOwnerProj
 import { ProjectTableView } from "./ProjectTableView";
 import Empty from "../Empty";
 import AddProjectBtn from "./AddProjectBtn";
-import AddProject from "../../features/projects/AddProject";
+import CreateProjectForm from "../../features/projects/CreateProjectForm";
 function ProjectTable() {
   const { isLoading, projects } = useOwnerProjects();
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -19,8 +19,9 @@ function ProjectTable() {
             پروژه های شما
           </h2>
         )}
-          <AddProjectBtn />
+          <AddProjectBtn onClick={()=>setIsFormOpen(true)}/>
       </div>
+      <CreateProjectForm open={isFormOpen}/>
       {projects.length ? <ProjectTableView/> : null}
     </div>
   );

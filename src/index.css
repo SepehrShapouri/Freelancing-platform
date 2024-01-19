@@ -141,6 +141,9 @@
   .project-table-wrapper{
     @apply relative overflow-x-auto w-full shadow-md sm:rounded-lg transition-all max-h-[1024px]
   }
+  .backdrop{
+    @apply backdrop-blur-sm bg-secondary-800 w-full h-screen fixed top-0 left-0 z-50 bg-opacity-30
+  }
 }
 html,
 body {

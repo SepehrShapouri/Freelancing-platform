@@ -14,7 +14,7 @@ function ProjectTableDataWrapper({project}) {
   return (
     <>
           <td className="projectTableData">
-        <div className="flex flex-wrap max-w-[200px] gap-2">
+        <div className="flex flex-wrap max-w-[200px] gap-2 justify-center">
           {project.tags.map((t, index) => (
             <ProjectTags tags={t} key={index} />
           ))}
@@ -36,7 +36,7 @@ function ProjectTableDataWrapper({project}) {
         <span>{project.freelancer ? project.freelancer : "-"}</span>
       </td>
       <td className="projectTableData">
-        <div className="flex gap-y-4 justify-between">
+        <div className="flex gap-x-4">
           <>
             <button onClick={() => setIsEditOpen(true)}>
               <FaEdit className="text-lg hover:opacity-65 transition-all text-emerald-500" />
