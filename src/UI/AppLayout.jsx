@@ -12,7 +12,7 @@ function AppLayout() {
         <div ><Header /></div>
         <div className="flex flex-row w-full h-full overflow-hidden z-[100] ">
             <Sidebar/>
-          <div className="w-full">
+          <div className="sm:w-full w-[337px]">
             <Outlet />
           </div>
         </div>

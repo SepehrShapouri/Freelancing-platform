@@ -10,7 +10,7 @@ function Profile() {
   const { user, isLoading } = useUser();
   const [toggleAvatarModal, setToggleAvatarModal] = useState(false);
   return (
-    <div className=" w-full h-full flex items-start justify-center  bg-gradient-to-tl from-white to-sky-100 relative">
+    <div className=" w-full h-full flex items-start justify-center  bg-gradient-to-tl from-white to-sky-100 relative px-4 sm:px-0">
       {toggleAvatarModal ? (
         <PickAvatarModal setToggleAvatarModal={setToggleAvatarModal} />
       ) : null}

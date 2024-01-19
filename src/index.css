@@ -139,7 +139,7 @@
     @apply text-cyan-600 hover:text-cyan-300 transition-all ease-in text-2xl
   }
   .project-table-wrapper{
-    @apply relative overflow-x-auto shadow-md sm:rounded-lg w-[417px] sm:w-[600px] md:w-[800px] lg:w-[1024px] transition-all max-h-[1024px]
+    @apply relative overflow-x-auto w-full shadow-md sm:rounded-lg transition-all max-h-[1024px]
   }
 }
 html,

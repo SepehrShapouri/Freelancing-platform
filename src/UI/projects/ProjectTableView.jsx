@@ -9,12 +9,6 @@ export function ProjectTableView() {
   console.log(projects);
   return (
     <div className="w-full flex flex-col transition-all items-center sm:px-20 max-h-[1024px]">
-      <div className="flex w-full items-center justify-between my-14 px-2">
-        <h2 className="text-cyan-800 text-xl sm:text-2xl font-bold">
-          پروژه های شما
-        </h2>
-        <AddProjectBtn />
-      </div>
       <div className="project-table-wrapper">
         <Table>
           <Table.header>
