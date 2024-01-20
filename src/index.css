@@ -144,6 +144,9 @@
   .backdrop{
     @apply backdrop-blur-sm bg-secondary-800 w-full h-screen fixed top-0 left-0 z-50 bg-opacity-30
   }
+  .createProjectFormInput{
+    @apply bg-slate-100 rounded-lg p-3 form-input ring-0 outline-none border-0 focus:ring-cyan-800
+  }
 }
 html,
 body {
