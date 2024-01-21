@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
-import { SidebarItem } from "./SidebarContainer";
 import Header from "./Header";
-import { Home, LayoutDashboard, Settings, User } from "lucide-react";
 import Sidebar from "./Sidebar";
 
 function AppLayout() {
@@ -12,7 +10,7 @@ function AppLayout() {
         <div ><Header /></div>
         <div className="flex flex-row w-full h-full overflow-hidden z-[100] ">
             <Sidebar/>
-          <div className="sm:w-full min-w-[337px] ">
+          <div className="w-full min-w-[337px] ">
             <Outlet />
           </div>
         </div>

@@ -1,17 +1,18 @@
-import { data } from "autoprefixer";
+
 import { XIcon } from "lucide-react";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import useOutsideClick from "../../hooks/useOutsideClick";
 import toast from "react-hot-toast";
 import DatePickerField from "../../UI/projects/DatePickerField";
+import CreateProjectField from "../../UI/projects/CreateProjectField";
+import TagInput from "../../UI/TagInput";
 function CreateProjectForm({ open, onClose }) {
   const { register, handleSubmit } = useForm();
-  const [tags,setTags]=useState([])
-  const [date,setDate] =useState()
-  const [openDatePicker,setOpenDatePicker] = useState(false)
+  const [tags, setTags] = useState([]);
+  const [date, setDate] = useState();
   const onSubmit = (data) => {
-    console.log(data);
+    console.log(data)
   };
   const ref = useOutsideClick(onClose);
   return (
@@ -32,50 +33,33 @@ function CreateProjectForm({ open, onClose }) {
           </div>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className=" flex flex-col gap-y-4"
+            className=" flex flex-col gap-y-4 text-cyan-800"
           >
-            <label htmlFor="title">عنوان پروژه</label>
-            <input
-              name="title"
-              id="title"
-              type="text"
-              className="createProjectFormInput"
-              {...register("title")}
+            <CreateProjectField
+              label="توضیحات"
+              name={"title"}
+              register={register}
             />
-                        <label htmlFor="description">توضیحات</label>
-            <input
-              id="description"
-              name="description"
-              type="text"
-              className="createProjectFormInput"
-              {...register("description")}
+            <CreateProjectField
+              label="توضیحات"
+              name={"description"}
+              register={register}
             />
-                        <label htmlFor="tags">تگ ها</label>
-            <input
-              id="tags"
-              name="tags"
-              type="text"
-              className="createProjectFormInput"
-              {...register("tags")}
+            <TagInput tags={tags} setTags={setTags}/>
+            <CreateProjectField
+              label="دسته بندی"
+              name={"category"}
+              register={register}
             />
-                        <label htmlFor="category">دسته بندی</label>
-            <input
-              id="category"
-              name="category"
-              type="text"
-              className="createProjectFormInput"
-              {...register("category")}
+            <CreateProjectField
+              label="بودجه"
+              name={"budget"}
+              register={register}
             />
-                        <label htmlFor="budget">بودجه</label>
-            <input
-              id="budget"
-              name="budget"
-              type="text"
-              className="createProjectFormInput"
-              {...register("budget")}
-            />
-<DatePickerField label="ددلاین" date={date} setDate={setDate}/>
-            <button type="submit" className="verifyButton">send</button>
+            <DatePickerField label="ددلاین" date={date} setDate={setDate} />
+            <button type="submit" className="verifyButton">
+              send
+            </button>
           </form>
         </div>
       </div>
