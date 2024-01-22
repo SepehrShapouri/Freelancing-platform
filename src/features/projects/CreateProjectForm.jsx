@@ -1,4 +1,3 @@
-
 import { XIcon } from "lucide-react";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -10,7 +9,7 @@ import TagInput from "../../UI/TagInput";
 import useCreateProject from "./projectsHooks/useCreateProject";
 import Loader from "../../UI/Loader";
 function CreateProjectForm({ open, onClose }) {
-  const { register, handleSubmit,reset } = useForm();
+  const { register, handleSubmit,reset,formState:{errors} } = useForm();
   const [tags, setTags] = useState([]);
   const [date, setDate] = useState("");
   const {createProject,isCreating} = useCreateProject()
@@ -52,11 +51,38 @@ function CreateProjectForm({ open, onClose }) {
               label="عنوان پروژه"
               name={"title"}
               register={register}
+              required
+              errors={errors}
+              validationSchema={{
+                required:"عنوان پروژه ضروری است",
+                minLength:{
+                  value:5,
+                  message:"طول عنوان کافی نیست"
+                },
+                maxLength:{
+                  value:15,
+                  message:"طول عنوان بیش از حد مجاز است"
+                }
+              }
+              }
             />
             <CreateProjectField
               label="توضیحات"
               name={"description"}
               register={register}
+              required
+              errors={errors}
+              validationSchema={{
+                required:"توضیحات پروژه ضروری است",
+                minLength:{
+                  value:10,
+                  message:"طول توضیحات کافی نیست"
+                },
+                maxLength:{
+                  value:35,
+                  message:"طول توضیحات بیش از حد مجاز است"
+                }
+              }}
             />
             <TagInput tags={tags} setTags={setTags}/>
             <CreateProjectField
@@ -68,6 +94,12 @@ function CreateProjectForm({ open, onClose }) {
               label="بودجه"
               name={"budget"}
               register={register}
+              errors={errors}
+              required
+              type="number"
+              validationSchema={{
+                required:"لطفا بودجه مورد نظر را وارد کنید"
+              }}
             />
             <DatePickerField label="ددلاین" date={date} setDate={setDate} />
             <button type="submit" className="verifyButton" disabled={isCreating}>

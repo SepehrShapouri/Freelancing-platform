@@ -4,48 +4,56 @@ import { useCompleteProfile } from "./authHooks/useCompleteProfile";
 import Loader from "../../UI/Loader";
 import { IoIosMale, IoIosFemale } from "react-icons/io";
 import { ArrowRightCircle} from "lucide-react";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 function CompleteProfileForm() {
   const [role, setRole] = useState(null);
-  const [fullName, setFullName] = useState({
-    name: "",
-    lastName: "",
-  });
+  const {register,formState:{errors},handleSubmit} = useForm()
   const [gender, setGender] = useState(null);
   const { isPending,data, completeProfileHandler } = useCompleteProfile();
-  const [email, setEmail] = useState("");
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const name = `${fullName.name} ${fullName.lastName}`;
-    completeProfileHandler(name, email, role, gender);
+  const onSubmit = ({email,name,lastname}) => {
+    const fullname = `${name} ${lastname}`
+    completeProfileHandler(fullname, email, role, gender);
   };
   return (
-    <div className="flex flex-col justify-center h-screen items-center  bg-gradient-to-br from-sky-50 to-sky-100">
+    <div className="flex flex-col justify-center h-screen items-center  bg-gradient-to-br from-sky-50 to-sky-100 ">
       <AppLogo />
       <div className="flex">
-        <div className=" bg-white sm:w-[500px] w-[400px] h-[500px] transition-all shadow-sm sm:rounded-r-3xl sm:rounded-l-none rounded-3xl flex justify-center">
-          <form className="w-full p-6 sm:px-16 sm:py-10 h-[500px] flex flex-col gap-y-6 justify-center">
+        <div className=" bg-white sm:w-[500px] w-[400px] h-[500px] overflow-auto transition-all shadow-sm sm:rounded-r-3xl sm:rounded-l-none rounded-3xl flex justify-center">
+          <form onSubmit={handleSubmit(onSubmit)} className="w-full p-6 sm:px-16 sm:py-10 h-[500px] flex flex-col gap-y-6 justify-center">
             <CompleteProfileInput
+            required
               label="نام"
               placeholder="سپهر"
-              id="name"
-              onChange={(e) =>
-                setFullName({ ...fullName, name: e.target.value })
-              }
+              name="name"
+              register={register}
+              errors={errors}
+              validationSchema={{
+                required:"نام خود را وارد کنید!",
+              }}
             />
             <CompleteProfileInput
+            required
               label="نام خوانوادگی"
               placeholder="شاپوری"
-              id="lastname"
-              onChange={(e) =>
-                setFullName({ ...fullName, lastName: e.target.value })
-              }
+              name="lastname"
+              register={register}
+              errors={errors}
+              validationSchema={{
+                required:"نام خوانوادگی خود را وارد کنید!"
+              }}
             />
             <GenderSelect gender={gender} setGender={setGender} />
             <CompleteProfileInput
+            required
               label="ایمیل"
               placeholder="user@example.com"
-              id="email"
-              onChange={(e) => setEmail(e.target.value)}
+              name="email"
+              register={register}
+              errors={errors}
+              validationSchema={{
+                required:"ایمیل خود را وارد کنید!"
+              }}
             />
             <RoleSelect role={role} setRole={setRole}/>
             <aside className="text-sm flex items-center mt-2">
@@ -59,7 +67,7 @@ function CompleteProfileForm() {
             </span>
           ) : (
             <button
-              onClick={(e) => handleSubmit(e)}
+            type="submit"
               className="verifyButton w-full"
             >
               تکمیل پروفایل
@@ -88,10 +96,10 @@ function CompleteProfileForm() {
 }
 export default CompleteProfileForm;
 
-function GenderSelect({ gender, setGender }) {
+function GenderSelect({ gender, setGender}) {
   return (
     <div className="flex w-full items-center justify-between">
-      <p className="text-cyan-800 text-sm">جنسیت</p>
+      <label className="text-cyan-800 text-sm">جنسیت <span className="text-error">*</span></label>
       <span className="flex gap-x-12">
         <li className="list-none">
           <input
@@ -137,28 +145,31 @@ function GenderSelect({ gender, setGender }) {
     </div>
   );
 }
-function CompleteProfileInput({ label, id, onChange, placeholder, value }) {
+function CompleteProfileInput({ label, name, placeholder,register,errors,required,validationSchema }) {
   return (
+    <>
     <span className="flex w-full items-center justify-between">
       <label htmlFor="name" className="text-sm text-cyan-800">
         {label}
+        {required && <span className="text-error">*</span>}
       </label>
       <input
         type="text"
-        name={id}
-        id={id}
-        value={value}
-        onChange={onChange}
+        name={name}
+        id={name}
         placeholder={placeholder}
+        {...register(name,validationSchema)}
         className="text-sm placeholder:text-sm placeholder:opacity-50 w-[250px] rounded-md h-[40px] bg-slate-100 px-4 hover:border hover:border-gray-200 focus:border focus:border-gray-300 transition-all"
       />
     </span>
+    {errors && errors[name] && <p className="text-[12px] -my-3 text-error">{errors[name]?.message}</p>}
+          </>
   );
 }
-function RoleSelect({ role, setRole }) {
+function RoleSelect({ role, setRole,}) {
   return (
     <div className="flex items-center justify-between">
-      <p className="text-sm text-cyan-800">پوزیشن</p>
+      <label className="text-sm text-cyan-800">پوزیشن <span className="text-error">*</span></label>
       <span className="flex  justify-between w-[250px]">
         <div className="flex items-center  w-[100px] h-[30px] justify-between p-3">
           <input

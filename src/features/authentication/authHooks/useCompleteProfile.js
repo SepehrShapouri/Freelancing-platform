@@ -8,9 +8,6 @@ export function useCompleteProfile() {
   });
   const navigate = useNavigate();
   const completeProfileHandler = async (name, email, role,gender) => {
-    if(name || email ||role||gender == "") {
-      toast.error("لطفا تمامی فیلد هارا پر کنید")
-    }
     try {
       const { user, message } = await mutateAsync({ name, email, role,gender});
       toast.success(message);
