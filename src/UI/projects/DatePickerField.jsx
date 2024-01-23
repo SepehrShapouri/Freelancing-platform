@@ -4,22 +4,26 @@ import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import { Calendar } from 'lucide-react';
 
-function DatePickerField({label,date,setDate}) {
+function DatePickerField({label,onChange,value,name,errors}) {
   return (
     <>
-    <label>{label}</label>
-        <div className='border-b  flex py-3 px-2 border-slate-400 shadow-sm hover:shadow-lg transition-all mb-4'>
+    <label>{label} {<span className='text-xs text-error'>*</span>}</label>
+        <div className='border-b  flex py-3 px-2 border-slate-400 shadow-sm hover:shadow-lg transition-all'>
               <DatePicker 
+              name={name}
             containerClassName="w-full"
             inputClass="w-full"
             calendarPosition="bottom-center"
-            value={date}
-            onChange={(date) => setDate(date)}
+            value={value || ""}
+            onChange={(date)=>{
+              onChange(date?.isValid? date:"")
+            }}
             format="YYYY/MM/DD"
             calendar={persian}
             locale={persian_fa}/>
             <Calendar/>
     </div>
+    {errors &&errors[name] &&<span className='text-xs text-error mb-4'>{errors[name]?.message}</span>}
     </>
   )
 }

@@ -5,7 +5,6 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import { useSendOTP } from "./authHooks/useSendOTP";
 import { useCheckOTP } from "./authHooks/useCheckOTP";
 import OTPCoundown from "../../UI/OTPCoundown";
-import AppLogo from "../../UI/AppLogo";
 import Loader from "../../UI/Loader";
 function CheckOTPForm({ phoneNumber, setStep }) {
   const [otp, setOtp] = useState();
