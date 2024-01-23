@@ -1,5 +1,4 @@
 import React from "react";
-import useOwnerProjects from "../features/projects/projectsHooks/useOwnerProjects";
 import ProjectTable from "../UI/projects/ProjectTable";
 
 function Projects() {

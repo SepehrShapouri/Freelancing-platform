@@ -1,8 +1,6 @@
-import { IoAddCircle } from "react-icons/io5";
 import useOwnerProjects from "../../features/projects/projectsHooks/useOwnerProjects";
 import ProjectTableRow from "./ProjectTableRow";
 import Table from "../Table";
-import AddProjectBtn from "./AddProjectBtn";
 export function ProjectTableView() {
   const { projects, isLoading } = useOwnerProjects();
   if (isLoading) return <Loader />;

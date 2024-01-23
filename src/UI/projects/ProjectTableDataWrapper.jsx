@@ -7,7 +7,6 @@ import Modal from '../Modal';
 import ConfirmDeleteProject from './ConfirmDeleteProject';
 import truncateText from '../../utils/truncateText';
 import useRemoveProject from "../../features/projects/projectsHooks/useRemoveProject"
-import useSingleCategory from '../../features/category/categoryHooks/useSingleCategory';
 function ProjectTableDataWrapper({project}) {
     const [isEditOpen, setIsEditOpen] = useState();
     const [isDeleteOpen, setIsDeleteOpen] = useState();

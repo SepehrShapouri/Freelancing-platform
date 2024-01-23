@@ -5,7 +5,6 @@ import Loader from "../../UI/Loader";
 import { IoIosMale, IoIosFemale } from "react-icons/io";
 import { ArrowRightCircle} from "lucide-react";
 import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
 function CompleteProfileForm() {
   const [role, setRole] = useState(null);
   const {register,formState:{errors},handleSubmit} = useForm()

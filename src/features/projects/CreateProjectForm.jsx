@@ -1,19 +1,12 @@
 import { XIcon } from "lucide-react";
 import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
-import useOutsideClick from "../../hooks/useOutsideClick";
-import toast from "react-hot-toast";
 import DatePickerField from "../../UI/projects/DatePickerField";
 import CreateProjectField from "../../UI/projects/CreateProjectField";
 import TagInput from "../../UI/TagInput";
 import useCreateProject from "./projectsHooks/useCreateProject";
 import Loader from "../../UI/Loader";
-import CategoryDropdown, { options } from "../category/CategoryDropdown";
-import { Select } from "antd";
-import { FaBoxOpen } from "react-icons/fa";
-import DatePicker from "react-multi-date-picker";
-import { toTimestamp } from "../../utils/toTimeStamp";
-import { toEnDigit } from "../../utils/toEnDigits";
+import CategoryDropdown from "../category/CategoryDropdown";
 import { getDeadline } from "../../utils/getDeadline";
 function CreateProjectForm({ open, onClose }) {
   const {

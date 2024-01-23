@@ -1,5 +1,5 @@
 import { XIcon } from "lucide-react";
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import useOutsideClick from "../hooks/useOutsideClick";
 
 function Modal({ children, title, open, onClose}) {

@@ -3,7 +3,6 @@ import VerifyButton from "../../UI/VerifyButton";
 import TextField from "../../UI/TextField";
 import Loader from "../../UI/Loader";
 import { useSendOTP } from "./authHooks/useSendOTP";
-import AppLogo from "../../UI/AppLogo";
 
 function SendOTPForm({ setStep, phoneNumber, onChange }) {
   const { isPending,sendOTP} = useSendOTP(setStep);

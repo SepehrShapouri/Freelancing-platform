@@ -71,8 +71,9 @@ function PickAvatarModal({ setToggleAvatarModal }) {
           <div className=" flex flex-col items-center">
             <p className="text-cyan-800 font-bold">اواتار خود را انتخاب کنید</p>
             <div className="flex flex-wrap w-[300px] sm:w-full justify-center gap-4 mt-6">
-              {avatars.map((avatar) => (
+              {avatars.map((avatar,index) => (
                 <SingleAvatar
+                key={index}
                   avatar={avatar}
                   activeAvatar={activeAvatar}
                   setActiveAvatar={setActiveAvatar}
