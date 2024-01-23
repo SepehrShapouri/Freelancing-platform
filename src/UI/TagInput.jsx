@@ -7,6 +7,7 @@ function TagInput({ tags, setTags }) {
     if (!value.trim()) return;
     setTags([...tags, value]);
     e.target.value = "";
+    e.preventDefault()
   }
   function removeTag(index) {
     const filteredTags = [...tags];

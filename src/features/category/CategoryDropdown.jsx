@@ -1,6 +1,7 @@
 import React from "react";
 import { Select } from "antd";
 import { FaBoxOpen } from "react-icons/fa";
+import useAllCategories from "./categoryHooks/useAllCategories";
 export const options = [
     {
       value: "1",
@@ -28,6 +29,10 @@ export const options = [
     },
   ];
 function CategoryDropdown({field,errors,name}) {
+    const {categories,isLoading} = useAllCategories()
+    const allOptions = categories?.map((category)=>({value:category._id,label:category.title}))
+    console.log(allOptions)
+
   return (
 <div className="flex flex-col gap-y-3 my-1">
     <label htmlFor="category">
@@ -57,7 +62,7 @@ id="category"
           .toLowerCase()
           .localeCompare((optionB?.label ?? "").toLowerCase())
       }
-      options={options}
+      options={allOptions}
     />
     {errors && errors[name] && <span className="text-xs text-error">{errors[name]?.message}</span>}
 </div>

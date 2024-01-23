@@ -26,7 +26,6 @@ function CreateProjectForm({ open, onClose }) {
   const [tags, setTags] = useState([]);
   const { createProject, isCreating } = useCreateProject();
   const onSubmit = (data) => {
-
     const deadline = getDeadline(data.deadline)
     const newProject = {
       ...data,
@@ -38,6 +37,7 @@ function CreateProjectForm({ open, onClose }) {
         onSuccess:()=>{
           reset()
           onClose()
+          setTags([])
         }
       })
     console.log(newProject)

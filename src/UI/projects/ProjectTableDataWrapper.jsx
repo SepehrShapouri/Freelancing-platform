@@ -7,6 +7,7 @@ import Modal from '../Modal';
 import ConfirmDeleteProject from './ConfirmDeleteProject';
 import truncateText from '../../utils/truncateText';
 import useRemoveProject from "../../features/projects/projectsHooks/useRemoveProject"
+import useSingleCategory from '../../features/category/categoryHooks/useSingleCategory';
 function ProjectTableDataWrapper({project}) {
     const [isEditOpen, setIsEditOpen] = useState();
     const [isDeleteOpen, setIsDeleteOpen] = useState();
@@ -23,7 +24,7 @@ function ProjectTableDataWrapper({project}) {
       <td className="projectTableData">
         {toPersianNumbersWithComma(project.budget)}
       </td>
-      <td className="projectTableData">{project.category}</td>
+      <td className="projectTableData">{project?.category?.title}</td>
       <td className="projectTableData">{toLocalDateShort(project.deadline)}</td>
       <td className="projectTableData">
         {project.status == "OPEN" ? (
