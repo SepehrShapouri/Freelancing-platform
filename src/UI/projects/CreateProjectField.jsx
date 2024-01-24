@@ -3,7 +3,7 @@ import React from "react";
 function CreateProjectField({ type="text",validationSchema={}, name, register, label,required,errors }) {
   return (
     <>
-      <label htmlFor="budget" className="font-medium">{label} {required && <span className="text-error">*</span>}</label>
+      <label htmlFor="budget" className="font-medium ">{label} {required && <span className="text-error">*</span>}</label>
       <input
         id={name}
         name={name}

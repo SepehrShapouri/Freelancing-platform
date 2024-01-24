@@ -7,33 +7,70 @@ import TagInput from "../../UI/TagInput";
 import useCreateProject from "./projectsHooks/useCreateProject";
 import Loader from "../../UI/Loader";
 import CategoryDropdown from "../category/CategoryDropdown";
-import { getDeadline } from "../../utils/getDeadline";
-function CreateProjectForm({ open, onClose }) {
+import useEditProject from "./projectsHooks/useEditProject";
+function CreateProjectForm({ open, onClose, project = {} }) {
+  const { _id: editId } = project;
+  const {
+    title,
+    deadline,
+    tags: prevTags,
+    budget,
+    description,
+    category,
+  } = project;
+
+  const isEditSession = Boolean(editId);
+
+  let editValues = {};
+
+  if (isEditSession) {
+    editValues = {
+      title,
+      budget,
+      description,
+      category: category?._id,
+    };
+  }
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
     control,
-  } = useForm();
-  const [tags, setTags] = useState([]);
+  } = useForm({defaultValues:editValues});
+
+  const [tags, setTags] = useState(prevTags || []);
+  const [date,setDate] = useState(new Date(deadline|| ""))
   const { createProject, isCreating } = useCreateProject();
+  const { editProject, isEditting } = useEditProject();
+
   const onSubmit = (data) => {
-    const deadline = getDeadline(data.deadline)
     const newProject = {
       ...data,
-      deadline,
+      deadline:new Date(date).toISOString(),
       tags,
     };
-        createProject(newProject,
-      {
-        onSuccess:()=>{
-          reset()
-          onClose()
-          setTags([])
+    if(isEditSession){
+      editProject(
+        { id: editId, newProject },
+        {
+          onSuccess: () => {
+            onClose();
+            reset();
+          },
         }
-      })
-    console.log(newProject)
+      );
+      console.log(newProject,editId)
+    }else{
+      createProject(newProject, {
+        onSuccess: () => {
+          reset();
+          onClose();
+          setTags([]);
+        },
+      });
+      console.log(newProject)
+    }
   };
   // const ref = useOutsideClick(onClose);
   return (
@@ -45,7 +82,7 @@ function CreateProjectForm({ open, onClose }) {
         >
           <div className="flex justify-between items-center pb-4 mb-4 border-b border-b-secondary-300">
             <h2 className="text-xl font-bold text-cyan-800">
-              ایجاد پروژه جدید
+              {isEditSession ? "ویرایش پروژه" : "ایجاد پروژه جدید"}
             </h2>
             <XIcon
               className="transition-all hover:text-red-500"
@@ -112,20 +149,12 @@ function CreateProjectForm({ open, onClose }) {
                 required: "لطفا بودجه مورد نظر را وارد کنید",
               }}
             />
-            <Controller
-              control={control}
-              name="deadline"
-              rules={{ required: "ددلاین پروژه را وارد کنید" }} //optional
-              render={({ field: { onChange, name, value } }) => (
                 <DatePickerField
                   label="ددلاین"
-                  onChange={onChange}
-                  value={value}
-                  name={name}
+                  onChange={setDate}
+                  value={date}
                   errors={errors}
                 />
-              )}
-            />
             <button
               type="submit"
               className="verifyButton"

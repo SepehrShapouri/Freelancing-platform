@@ -7,6 +7,7 @@ import Modal from '../Modal';
 import ConfirmDeleteProject from './ConfirmDeleteProject';
 import truncateText from '../../utils/truncateText';
 import useRemoveProject from "../../features/projects/projectsHooks/useRemoveProject"
+import CreateProjectForm from "../../features/projects/CreateProjectForm"
 function ProjectTableDataWrapper({project}) {
     const [isEditOpen, setIsEditOpen] = useState();
     const [isDeleteOpen, setIsDeleteOpen] = useState();
@@ -41,11 +42,9 @@ function ProjectTableDataWrapper({project}) {
             <button onClick={() => setIsEditOpen(true)}>
               <FaEdit className="text-lg hover:opacity-65 transition-all text-emerald-500" />
             </button>
-            <Modal
-              open={isEditOpen}
-              title="my modal"
-              onClose={() => setIsEditOpen(false)}
-            ></Modal>
+            <div className='text-start font-medium text-[16px]'>
+            <CreateProjectForm project={project} open={isEditOpen} isEditOpen={isEditOpen} onClose={()=>setIsEditOpen(false)}/>
+            </div>
           </>
           <>
             <button onClick={() => setIsDeleteOpen(true)}>

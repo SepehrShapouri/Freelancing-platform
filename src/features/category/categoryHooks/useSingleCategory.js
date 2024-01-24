@@ -4,7 +4,7 @@ import { getCategoryByIdApi } from "../../../services/categoryServices";
 export default function useSingleCategory(id){
     const {data,isLoading} = useQuery({
         queryKey:['category'],
-        queryFn:getCategoryByIdApi,
+        queryFn:()=>getCategoryByIdApi(id),
         retry:false
     })
     const {category} = data || {}

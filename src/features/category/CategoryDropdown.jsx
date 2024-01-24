@@ -31,7 +31,6 @@ export const options = [
 function CategoryDropdown({field,errors,name}) {
     const {categories,isLoading} = useAllCategories()
     const allOptions = categories?.map((category)=>({value:category._id,label:category.title}))
-    console.log(allOptions)
 
   return (
 <div className="flex flex-col gap-y-3 my-1">

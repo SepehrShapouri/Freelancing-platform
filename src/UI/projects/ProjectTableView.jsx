@@ -4,7 +4,6 @@ import Table from "../Table";
 export function ProjectTableView() {
   const { projects, isLoading } = useOwnerProjects();
   if (isLoading) return <Loader />;
-  console.log(projects);
   return (
     <div className="w-full flex flex-col transition-all items-center sm:px-20 max-h-[1024px]">
       <div className="project-table-wrapper">
