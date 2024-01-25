@@ -8,6 +8,7 @@ import ConfirmDeleteProject from './ConfirmDeleteProject';
 import truncateText from '../../utils/truncateText';
 import useRemoveProject from "../../features/projects/projectsHooks/useRemoveProject"
 import CreateProjectForm from "../../features/projects/CreateProjectForm"
+import ToggleProjectStatus from '../../features/projects/ToggleProjectStatus';
 function ProjectTableDataWrapper({project}) {
     const [isEditOpen, setIsEditOpen] = useState();
     const [isDeleteOpen, setIsDeleteOpen] = useState();
@@ -26,18 +27,19 @@ function ProjectTableDataWrapper({project}) {
       </td>
       <td className="projectTableData">{project?.category?.title}</td>
       <td className="projectTableData">{toLocalDateShort(project.deadline)}</td>
-      <td className="projectTableData">
+      <td className="projectTableData flex gap-x-2">
         {project.status == "OPEN" ? (
           <span className="badge badge--success">باز</span>
         ) : (
           <span className="badge badge--danger">بسته</span>
         )}
+        <ToggleProjectStatus project={project}/>
       </td>
       <td className="projectTableData">
         <span>{project.freelancer ? project.freelancer : "-"}</span>
       </td>
       <td className="projectTableData">
-        <div className="flex gap-x-4">
+        <div className="flex gap-x-2">
           <>
             <button onClick={() => setIsEditOpen(true)}>
               <FaEdit className="text-lg hover:opacity-65 transition-all text-emerald-500" />
