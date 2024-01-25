@@ -1,6 +1,7 @@
 import useOwnerProjects from "../../features/projects/projectsHooks/useOwnerProjects";
 import ProjectTableRow from "./ProjectTableRow";
 import Table from "../Table";
+import Loader from "../Loader";
 export function ProjectTableView() {
   const { projects, isLoading } = useOwnerProjects();
   if (isLoading) return <Loader />;

@@ -29,7 +29,7 @@ function ProjectTableDataWrapper({project}) {
       </td>
       <td className="projectTableData">{project?.category?.title}</td>
       <td className="projectTableData">{toLocalDateShort(project.deadline)}</td>
-      <td className="projectTableData flex gap-x-2">
+      <td className="projectTableData flex gap-x-2 border-b-0">
                 {project.status == "OPEN" ? (
           <span className="badge badge--success">باز</span>
         ) : (
