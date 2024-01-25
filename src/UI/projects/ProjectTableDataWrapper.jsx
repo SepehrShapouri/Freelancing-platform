@@ -8,7 +8,7 @@ import ConfirmDeleteProject from './ConfirmDeleteProject';
 import truncateText from '../../utils/truncateText';
 import useRemoveProject from "../../features/projects/projectsHooks/useRemoveProject"
 import CreateProjectForm from "../../features/projects/CreateProjectForm"
-import ToggleProjectStatus from '../../features/projects/ToggleProjectStatus';
+import ToggleProjectStatus from '../../features/projects/toggleProjectStatus';
 function ProjectTableDataWrapper({project}) {
     const [isEditOpen, setIsEditOpen] = useState();
     const [isDeleteOpen, setIsDeleteOpen] = useState();
@@ -28,7 +28,7 @@ function ProjectTableDataWrapper({project}) {
       <td className="projectTableData">{project?.category?.title}</td>
       <td className="projectTableData">{toLocalDateShort(project.deadline)}</td>
       <td className="projectTableData flex gap-x-2">
-        {project.status == "OPEN" ? (
+                {project.status == "OPEN" ? (
           <span className="badge badge--success">باز</span>
         ) : (
           <span className="badge badge--danger">بسته</span>
