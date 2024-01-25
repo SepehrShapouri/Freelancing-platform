@@ -75,7 +75,7 @@ function CreateProjectForm({ open, onClose, project = {} }) {
   // const ref = useOutsideClick(onClose);
   return (
     open && (
-      <div className="backdrop flex items-center justify-center">
+      <div className="backdrop flex items-center justify-center z-[10000]">
         <div
           // ref={ref}
           className="bg-white w-[calc(100vw-4rem)]  max-h-[700px] overflow-auto  rounded-lg shadow-xl max-w-screen-sm p-4"
@@ -124,7 +124,7 @@ function CreateProjectForm({ open, onClose, project = {} }) {
                   message: "طول توضیحات کافی نیست",
                 },
                 maxLength: {
-                  value: 35,
+                  value: 85,
                   message: "طول توضیحات بیش از حد مجاز است",
                 },
               }}

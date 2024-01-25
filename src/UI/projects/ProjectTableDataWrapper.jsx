@@ -9,6 +9,8 @@ import truncateText from '../../utils/truncateText';
 import useRemoveProject from "../../features/projects/projectsHooks/useRemoveProject"
 import CreateProjectForm from "../../features/projects/CreateProjectForm"
 import ToggleProjectStatus from '../../features/projects/toggleProjectStatus';
+import { Eye, View, Watch } from 'lucide-react';
+import { Link } from 'react-router-dom';
 function ProjectTableDataWrapper({project}) {
     const [isEditOpen, setIsEditOpen] = useState();
     const [isDeleteOpen, setIsDeleteOpen] = useState();
@@ -66,6 +68,9 @@ function ProjectTableDataWrapper({project}) {
             </Modal>
           </>
         </div>
+      </td>
+      <td className="projectTableData">
+        <Link to={project._id} className='flex items-center justify-center'>        <Eye className='hover:text-indigo-400 transition-all cursor-pointer'/></Link>
       </td>
     </>
   )

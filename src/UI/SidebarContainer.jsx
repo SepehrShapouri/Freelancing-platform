@@ -12,7 +12,7 @@ function SidebarContainer({ children }) {
   const { user, isLoading } = useUser();
   return (
     <>
-      <aside className="z-10 overflow-auto">
+      <aside className="z-[100] overflow-auto">
         <nav className="h-full flex flex-col bg-white border-l shadow-sm">
           <div className="p-4 pb-2 flex justify-between items-center">
             <h1
@@ -74,7 +74,7 @@ export function SidebarItem({ text, icon, onClick, path }) {
     >
       {icon}
       <span
-        className={`overflow-hidden transition-all ${
+        className={` overflow-hidden transition-all ${
           expanded ? "w-52 mr-3" : "w-0"
         }`}
       >
@@ -82,7 +82,7 @@ export function SidebarItem({ text, icon, onClick, path }) {
       </span>
       {!expanded && (
         <div
-          className={` w-[60px] flex items-center justify-center absolute right-full rounded-md px-2 py-1 mr-6 bg-sky-100 text-cyan-800 text-sm invisible opacity-20 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0 z-10`}
+          className={` w-[60px] flex items-center right-[50px] justify-center fixed rounded-md px-2 py-1 mr-6 bg-sky-100 text-cyan-800 text-sm  invisible opacity-20 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0`}
         >
           {text}
         </div>

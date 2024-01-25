@@ -13,6 +13,11 @@ export function editProjectApi({ id, newProject }) {
     .patch(`/project/update/${id}`, newProject)
     .then(({ data }) => data.data);
 }
-export function toggelProjectStatusApi({ id, projectStatus}) {
-  return http.patch(`/project/${id}`, projectStatus).then(({ data }) => data.data);
+export function toggelProjectStatusApi({ id, projectStatus }) {
+  return http
+    .patch(`/project/${id}`, projectStatus)
+    .then(({ data }) => data.data);
+}
+export function getProjectByidApi(id) {
+  return http.get(`/project/${id}`).then(({ data }) => data.data);
 }

@@ -12,6 +12,7 @@ import OwnerDashboard from "./pages/OwnerDashboard";
 import Projects from "./pages/Projects";
 import SingleProject from "./pages/SingleProject";
 import Profile from "./pages/Profile";
+import ProposalTable from "./features/proposal/ProposalTable";
 function App() {
   const queryClient = new QueryClient();
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="projects" element={<Projects/>}/>
             <Route path="projects/:id" element={<SingleProject/>}/>
             <Route path="profile" element={<Profile/>}/>
+            <Route path="proposals/:id" element={<ProposalTable/>}/>
           </Route>
           <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />

@@ -34,6 +34,9 @@ export function ProjectTableView() {
               <th scope="col" className="pc-6 py-4 text-cyan-800">
                 تنظیمات
               </th>
+              <th scope="col" className="pc-6 py-4 text-cyan-800">
+          صفحه پروژه
+              </th>
             </Table.row>
           </Table.header>
           <Table.body>
