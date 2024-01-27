@@ -56,7 +56,7 @@ function SingleProject() {
           <div className="flex justify-evenly">
             <SingleProjectDataCard className="w-[120px]">
               <h2 className="text-lg flex items-center justify-between">
-                ددلاین{" "}
+                ددلاین
                 <span className="text-cyan-600">
                   <Calendar />
                 </span>
@@ -66,8 +66,8 @@ function SingleProject() {
             <SingleProjectDataCard className="">
               <h2 className="text-lg">تگ ها</h2>
               <span className="flex flex-wrap w-[100px] gap-2">
-                {project.tags.map((tag) => (
-                  <ProjectTags tags={tag} />
+                {project.tags.map((tag,index) => (
+                  <ProjectTags tags={tag} key={index} />
                 ))}
               </span>
             </SingleProjectDataCard>
