@@ -1,11 +1,11 @@
 import React from "react";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { Link, useParams} from "react-router-dom";
 import useSingleProject from "../features/projects/projectsHooks/useSingleProject";
 import toLocalDateShort from "../utils/toLocalDateShort";
 import Loader from "../UI/Loader";
 import { toPersianNumbers, toPersianNumbersWithComma } from "../utils/toPersianNumbers";
 import { CiMoneyBill } from "react-icons/ci";
-import { ArrowBigLeft, ArrowLeft, Calendar, List, User } from "lucide-react";
+import {  ArrowLeft, Calendar, List, User } from "lucide-react";
 import ProjectTags from "../UI/projects/ProjectTags";
 import {useMoveBack} from "../hooks/useMoveBack"
 function SingleProject() {
@@ -64,7 +64,7 @@ function SingleProject() {
               </h2>
               <span>{toLocalDateShort(project?.deadline)}</span>
             </SingleProjectDataCard>
-            <SingleProjectDataCard className="">
+            <SingleProjectDataCard >
               <h2 className="text-lg">تگ ها</h2>
               <span className="flex flex-wrap w-[120px] gap-2">
                 {project.tags.map((tag,index) => (
