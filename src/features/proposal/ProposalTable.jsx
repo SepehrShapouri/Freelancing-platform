@@ -85,11 +85,9 @@ export function ProposalRow({proposal,project}){
     <td className='projectTableData'>{toPersianNumbers(proposal.duration)} روز</td>
     <td className='projectTableData'>{toPersianNumbersWithComma(proposal.price)}</td>
     <td className='projectTableData'>{statusBadge}</td>
-    <td className='projectTableData text-xs transition-all'><button onClick={()=>setOpen(true)}>تغییر وضعیت</button>
+    <td className='projectTableData text-xs transition-all'><button onClick={()=>setOpen(true)} className='text-indigo-800 transition-all hover:text-indigo-400'>تغییر وضعیت</button>
     <Modal open={open} onClose={()=>setOpen(false)} title={`تغییر وضعیت درخواست ${proposal.user.name}`}>
       <div className='flex justify-between'>
-        {/* <button className='text-white text-sm bg-cyan-500 px-1 py-2 rounded-md shadow-lg transition-all hover:opacity-80 flex items-center gap-x-2' disabled={isToggling} onClick={()=>handleSubmit(2)}>تایید درخواست <FaCheckCircle/></button>
-        <button className='text-cyan-500 text-sm border-cyan-500 border-2 px-1 py-2 rounded-md shadow-lg hover:opacity-80 flex items-center gap-x-2' disabled={isToggling} onClick={()=>handleSubmit(0)}>رد کردن درخواست <MdCancel/></button> */}
         <ChangeProposalStatus onSubmit={handleSubmit}/>
       </div>
     </Modal>
