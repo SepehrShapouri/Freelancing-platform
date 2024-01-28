@@ -15,11 +15,11 @@ function SingleProject() {
   const moveBack = useMoveBack()
   console.log(project);
   return (
-    <div className=" sm:flex sm:items-center sm:justify-center w-full h-full max-h-[1024px] bg-gradient-to-br from-sky-100 to-white p-4 sm:overflow-auto ">
+    <div className=" sm:flex sm:items-center sm:justify-center w-full h-full max-h-[1024px] bg-gradient-to-br from-sky-100 to-white px-4 py-2 sm:overflow-auto ">
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="flex flex-col gap-y-2 sm:flex-row sm:flex-wrap sm:gap-1 sm:justify-center sm:items-center max-w-[1200px]">
+        <div className="flex flex-col gap-y-2 sm:flex-row sm:flex-wrap sm:gap-1 sm:justify-center sm:items-center max-w-[1200px] ">
           <span onClick={moveBack} className="self-end text-cyan-600 sm:absolute sm:top-[80px] sm:left-2"><ArrowLeft/></span>
           <div className="flex sm:justify-evenly justify-center">
             <SingleProjectDataCard className="w-[calc(50%-3rem)]">
@@ -74,7 +74,7 @@ function SingleProject() {
               </span>
             </SingleProjectDataCard>
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center ">
             <SingleProjectDataCard className="w-[calc(100%-10rem)]">
               <h2 className="text-md flex items-center justify-between">
                 نام فریلنسر
@@ -109,7 +109,7 @@ export default SingleProject;
 function SingleProjectDataCard({ children, className = "w-max" }) {
   return (
     <div
-      className={`${className}  bg-secondary-0 hover:opacity-90 flex flex-col  gap-y-1 transition-all hover:-translate-y-1 shadow-sm  text-cyan-900 rounded-xl  p-4 font-bold sm:w-[350px] sm:h-[110px] m-1 `}
+      className={`${className}  bg-secondary-0 hover:opacity-90 flex flex-col  gap-y-1 transition-all hover:-translate-y-1 shadow-sm  text-cyan-900 rounded-xl  p-4 font-bold sm:w-[350px] sm:h-[110px] m-1`}
     >
       {children}
     </div>

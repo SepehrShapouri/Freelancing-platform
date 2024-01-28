@@ -30,12 +30,12 @@ function ProjectTableDataWrapper({ project }) {
       <td className="projectTableData">{project?.category?.title}</td>
       <td className="projectTableData">{toLocalDateShort(project.deadline)}</td>
       <td className="projectTableData flex gap-x-2 border-b-0">
-        {project.status == "OPEN" ? (
+        {project.freelancer  ? <p>درحال انجام</p> :         <span className="flex gap-x-2 items-center">{project.status == "OPEN" ? (
           <span className="badge badge--success">باز</span>
         ) : (
           <span className="badge badge--danger">بسته</span>
         )}
-        <ToggleProjectStatus project={project} />
+        <ToggleProjectStatus project={project} /></span>}
       </td>
       <td className="projectTableData">
         <span>{project.freelancer ? project.freelancer : "-"}</span>
