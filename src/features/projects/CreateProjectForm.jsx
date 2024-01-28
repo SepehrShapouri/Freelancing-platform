@@ -1,13 +1,13 @@
 import { XIcon } from "lucide-react";
 import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
-import DatePickerField from "../../UI/projects/DatePickerField";
-import CreateProjectField from "../../UI/projects/CreateProjectField";
+import CreateProjectField from "./CreateProjectField";
 import TagInput from "../../UI/TagInput";
 import useCreateProject from "./projectsHooks/useCreateProject";
 import Loader from "../../UI/Loader";
 import CategoryDropdown from "../category/CategoryDropdown";
 import useEditProject from "./projectsHooks/useEditProject";
+import DatePickerField from "./DatePickerField";
 function CreateProjectForm({ open, onClose, project = {} }) {
   const { _id: editId } = project;
   const {

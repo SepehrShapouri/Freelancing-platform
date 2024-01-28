@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Loader from "../Loader";
-import useOwnerProjects from "../../features/projects/projectsHooks/useOwnerProjects";
+import Loader from "../../UI/Loader";
+import useOwnerProjects from "./projectsHooks/useOwnerProjects"
 import { ProjectTableView } from "./ProjectTableView";
-import Empty from "../Empty";
-import AddProjectBtn from "./AddProjectBtn";
-import CreateProjectForm from "../../features/projects/CreateProjectForm";
+import Empty from "../../UI/Empty";
+import AddProjectBtn from "../../UI/projects/AddProjectBtn";
+import CreateProjectForm from "./CreateProjectForm"
 function ProjectTable() {
   const { isLoading, projects } = useOwnerProjects();
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -19,10 +19,13 @@ function ProjectTable() {
             پروژه های شما
           </h2>
         )}
-          <AddProjectBtn onClick={()=>setIsFormOpen(true)}/>
+        <AddProjectBtn onClick={() => setIsFormOpen(true)} />
       </div>
-      <CreateProjectForm open={isFormOpen} onClose={()=>setIsFormOpen(false)}/>
-      {projects.length ? <ProjectTableView/> : null}
+      <CreateProjectForm
+        open={isFormOpen}
+        onClose={() => setIsFormOpen(false)}
+      />
+      {projects.length ? <ProjectTableView /> : null}
     </div>
   );
 }

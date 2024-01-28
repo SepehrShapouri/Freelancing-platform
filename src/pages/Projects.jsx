@@ -1,5 +1,5 @@
 import React from "react";
-import ProjectTable from "../UI/projects/ProjectTable";
+import ProjectTable from "../features/projects/ProjectTable";
 
 function Projects() {
   return (

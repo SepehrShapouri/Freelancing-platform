@@ -1,6 +1,5 @@
-
 import truncateText from "../../utils/truncateText";
-import Table from "../Table";
+import Table from "../../UI/Table";
 import ProjectTableDataWrapper from "./ProjectTableDataWrapper";
 
 export default function ProjectTableRow({ project }) {
@@ -12,7 +11,7 @@ export default function ProjectTableRow({ project }) {
       >
         {truncateText(project.title, 10)}
       </th>
-      <ProjectTableDataWrapper project={project}/>
+      <ProjectTableDataWrapper project={project} />
     </Table.row>
   );
 }

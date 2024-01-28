@@ -1,7 +1,7 @@
-import useOwnerProjects from "../../features/projects/projectsHooks/useOwnerProjects";
+import useOwnerProjects from "./projectsHooks/useOwnerProjects";
 import ProjectTableRow from "./ProjectTableRow";
-import Table from "../Table";
-import Loader from "../Loader";
+import Table from "../../UI/Table";
+import Loader from "../../UI/Loader";
 export function ProjectTableView() {
   const { projects, isLoading } = useOwnerProjects();
   if (isLoading) return <Loader />;
@@ -36,16 +36,13 @@ export function ProjectTableView() {
                 تنظیمات
               </th>
               <th scope="col" className="pc-6 py-4 text-cyan-800">
-          صفحه پروژه
+                صفحه پروژه
               </th>
             </Table.row>
           </Table.header>
           <Table.body>
             {projects.map((project) => (
-              <ProjectTableRow
-                key={project._id}
-                project={project}
-              />
+              <ProjectTableRow key={project._id} project={project} />
             ))}
           </Table.body>
         </Table>
