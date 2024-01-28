@@ -1,13 +1,14 @@
 import React from "react";
-import { Link, useParams} from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import useSingleProject from "../features/projects/projectsHooks/useSingleProject";
 import toLocalDateShort from "../utils/toLocalDateShort";
 import Loader from "../UI/Loader";
 import { toPersianNumbers, toPersianNumbersWithComma } from "../utils/toPersianNumbers";
 import { CiMoneyBill } from "react-icons/ci";
-import {  ArrowLeft, Calendar, List, User } from "lucide-react";
+import { ArrowBigLeft, ArrowLeft, Calendar, List, User } from "lucide-react";
 import ProjectTags from "../UI/projects/ProjectTags";
 import {useMoveBack} from "../hooks/useMoveBack"
+import ProposalTable from "../features/proposal/ProposalTable";
 function SingleProject() {
   const params = useParams();
   const { isLoading, project } = useSingleProject(params.id);
@@ -64,7 +65,7 @@ function SingleProject() {
               </h2>
               <span>{toLocalDateShort(project?.deadline)}</span>
             </SingleProjectDataCard>
-            <SingleProjectDataCard >
+            <SingleProjectDataCard className="">
               <h2 className="text-lg">تگ ها</h2>
               <span className="flex flex-wrap w-[120px] gap-2">
                 {project.tags.map((tag,index) => (
@@ -108,7 +109,7 @@ export default SingleProject;
 function SingleProjectDataCard({ children, className = "w-max" }) {
   return (
     <div
-      className={`${className}  bg-secondary-0 hover:opacity-90 flex flex-col  gap-y-1 transition-all hover:-translate-y-1 shadow-sm  text-cyan-900 rounded-xl  p-4 font-bold sm:w-[300px] sm:h-[100px] m-1 `}
+      className={`${className}  bg-secondary-0 hover:opacity-90 flex flex-col  gap-y-1 transition-all hover:-translate-y-1 shadow-sm  text-cyan-900 rounded-xl  p-4 font-bold sm:w-[350px] sm:h-[110px] m-1 `}
     >
       {children}
     </div>

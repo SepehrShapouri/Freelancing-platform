@@ -11,7 +11,7 @@ function ProposalTable() {
   const {isLoading,project} = useSingleProject(id)
     console.log(project?.proposals)
     if(isLoading) return <Loader/>
-    if(project.proposals.length < 1) return <div className=" flex justify-between w-full h-screen bg-gradient-to-br from-sky-100 to-white p-2"><h2 className='text-cyan-700'>درخواست فعالی برای این پروژه موجود نیست</h2> <ArrowLeft className='text-cyan-700' onClick={()=>moveBack()}/> </div>
+    if(project.proposals.length < 1) return <div className=" flex justify-between w-full h-screen bg-gradient-to-br from-sky-100 to-white p-2 sm:p-9"><h2 className='text-cyan-700 font-bold sm:text-xl'>درخواست فعالی برای این پروژه موجود نیست</h2> <ArrowLeft  className='text-cyan-700' onClick={()=>moveBack()}/> </div>
   return (
     <div className='w-full h-full max-h-[1024px] bg-gradient-to-br from-sky-100 to-white p-4'>
       <div className='flex justify-between items-center mb-4'><h2 className='text-cyan-800 text-xs'>درخواست های پروژه {project.title}</h2><ArrowLeft className='text-cyan-600' onClick={()=>moveBack()}/></div>
