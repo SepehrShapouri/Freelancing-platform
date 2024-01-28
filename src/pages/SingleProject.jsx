@@ -8,7 +8,6 @@ import { CiMoneyBill } from "react-icons/ci";
 import { ArrowBigLeft, ArrowLeft, Calendar, List, User } from "lucide-react";
 import ProjectTags from "../UI/projects/ProjectTags";
 import {useMoveBack} from "../hooks/useMoveBack"
-import ProposalTable from "../features/proposal/ProposalTable";
 function SingleProject() {
   const params = useParams();
   const { isLoading, project } = useSingleProject(params.id);

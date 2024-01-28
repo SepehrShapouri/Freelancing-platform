@@ -8,7 +8,6 @@ import { ArrowLeft } from 'lucide-react'
 import Modal from '../../UI/Modal'
 import useToggleProposal from './proposalHooks/useToggleProposal'
 import { useQueryClient } from '@tanstack/react-query'
-import { Listbox } from '@headlessui/react'
 import ChangeProposalStatus from './ChangeProposalStatus'
 function ProposalTable() {
   const moveBack = useMoveBack()
@@ -45,7 +44,7 @@ function ProposalTable() {
             </tr>
         </thead>
         <tbody>
-          {project.proposals.map((proposal)=><ProposalRow key={proposal._id} proposal={proposal} project={project}/>)}
+          {project.proposals.map((proposal)=><ProposalRow key={proposal._id} proposal={proposal}/>)}
         </tbody>
     </table>
 </div>
@@ -56,10 +55,9 @@ function ProposalTable() {
 
 export default ProposalTable
 
-export function ProposalRow({proposal,project}){
+export function ProposalRow({proposal}){
   const {toggleProposalStatus,isToggling} = useToggleProposal()
   const {_id} = proposal
-  const {id:projectId} = useParams()
   const queryClinet = useQueryClient()
   const [open,setOpen] = useState(false)
   const statusStyles =[{label:"رد شده",className:"badge badge--danger"},{label:"در انتظار",className:"bg-yellow-400 text-white"},{label:"تایید شده",className:"badge badge--success"}]
@@ -79,7 +77,7 @@ export function ProposalRow({proposal,project}){
         setOpen(false)
     }})
   }
-  return <tr className="bg-white border-b hover:bg-gray-50 ">
+  return <tr className="bg-white border-b ">
     <td className="projectTableData">{proposal.user.name}</td>
     <td className='projectTableData'>{proposal.description}</td>
     <td className='projectTableData'>{toPersianNumbers(proposal.duration)} روز</td>
