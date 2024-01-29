@@ -36,7 +36,7 @@ function CategoryDropdown({field,errors,name}) {
 <div className="flex flex-col gap-y-3 my-1">
     <label htmlFor="category">
         دسته بندی
-        <span className="text-xs text-error mr-1">*</span>
+        <span className="text-xs text-error mr-1 dark:text-rose-500">*</span>
     </label>
 <Select
 {...field}

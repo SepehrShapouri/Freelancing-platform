@@ -10,8 +10,9 @@ import {
   User,
 } from "lucide-react";
 import SidebarContainer, { SidebarItem } from "./SidebarContainer";
+import { useThemeContext } from "../context/ThemeContext";
 function Sidebar() {
-  const [theme, setTheme] = useState("light");
+  const {theme,setTheme} = useThemeContext()
   return (
     <div className="flex max-h-[1024px]">
       <SidebarContainer>
@@ -25,11 +26,6 @@ function Sidebar() {
         <SidebarItem icon={<User size={20} />} text="پروفایل"  path="profile"/>
         <hr className="mt-5" />
         <SidebarItem icon={<Settings size={20} />} text="تنظیمات"  />
-        <SidebarItem
-          icon={theme == "dark" ? <Sun size={20} /> : <Moon size={20} />}
-          text="تم"
-          onClick={() => setTheme(theme == "dark" ? "light" : "dark")}
-        />
       </SidebarContainer>
     </div>
   );

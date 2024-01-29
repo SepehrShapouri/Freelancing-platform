@@ -7,12 +7,12 @@ import { Calendar } from 'lucide-react';
 function DatePickerField({label,onChange,value,name,errors}) {
   return (
     <>
-    <label>{label} {<span className='text-xs text-error'>*</span>}</label>
+    <label>{label} {<span className='text-xs text-error dark:text-rose-500'>*</span>}</label>
         <div className='border-b  flex py-3 px-2 border-slate-400 shadow-sm hover:shadow-lg transition-all'>
               <DatePicker 
               name={name}
             containerClassName="w-full"
-            inputClass="w-full"
+            inputClass="w-full dark:bg-slate-800"
             calendarPosition="bottom-center"
             value={value || ""}
             onChange={(date)=>{

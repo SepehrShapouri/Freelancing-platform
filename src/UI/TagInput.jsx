@@ -23,7 +23,7 @@ function TagInput({ tags, setTags }) {
         <input
           type="text"
           onKeyDown={(e) => addTag(e)}
-          className="placeholder:text-sm"
+          className="placeholder:text-sm dark:bg-slate-800 dark:placeholder:text-white"
           placeholder="اضافه کردن تگ..."
         />
       </div>
@@ -35,14 +35,14 @@ export default TagInput;
 
 function TagItem({ tag, index, removeTag }) {
   return (
-    <div className="flex bg-sky-50 rounded-2xl items-center px-2 py-2">
+    <div className="flex bg-sky-50 rounded-2xl items-center px-2 py-2 dark:bg-indigo-300">
       <span
-        className="text-center flex items-center ml-2 transition-all hover:bg-rose-400 justify-center h-[20px] w-[20px] bg-cyan-800 text-white rounded-full cursor-pointer"
+        className="text-center flex items-center ml-2 transition-all hover:bg-rose-400 justify-center h-[20px] w-[20px] bg-cyan-800 text-white rounded-full cursor-pointer dark:bg-indigo-800"
         onClick={() => removeTag(index)}
       >
         &times;
       </span>
-      <span className="text-cyan-800 text-sm">{tag}</span>
+      <span className="text-cyan-800 text-sm dark:text-white">{tag}</span>
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import http from "./httpServices";
 
 export function getOtp(data) {
@@ -16,4 +17,9 @@ export function getUser() {
 }
 export function setAvatr(data) {
   return http.patch("/user/set-avatar", data).then(({ data }) => data.data);
+}
+export function userLogoutApi(){
+  return http
+  .post("/user/logout")
+  .then(({data})=>data.data)
 }

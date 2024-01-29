@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Loader from "../../UI/Loader";
-import useOwnerProjects from "./projectsHooks/useOwnerProjects"
 import { ProjectTableView } from "./ProjectTableView";
 import Empty from "../../UI/Empty";
 import AddProjectBtn from "../../UI/projects/AddProjectBtn";
 import CreateProjectForm from "./CreateProjectForm"
+import useOwnerProjects from "./projectsHooks/useOwnerProjects";
 function ProjectTable() {
   const { isLoading, projects } = useOwnerProjects();
   const [isFormOpen, setIsFormOpen] = useState(false);

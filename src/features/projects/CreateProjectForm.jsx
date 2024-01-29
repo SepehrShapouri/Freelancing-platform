@@ -78,10 +78,10 @@ function CreateProjectForm({ open, onClose, project = {} }) {
       <div className="backdrop flex items-center justify-center z-[10000]">
         <div
           // ref={ref}
-          className="bg-white w-[calc(100vw-4rem)]  max-h-[700px] overflow-auto  rounded-lg shadow-xl max-w-screen-sm p-4"
+          className="bg-white w-[calc(100vw-4rem)]  max-h-[700px] overflow-auto  rounded-lg shadow-xl max-w-screen-sm p-4 dark:bg-slate-800 dark:text-white"
         >
-          <div className="flex justify-between items-center pb-4 mb-4 border-b border-b-secondary-300">
-            <h2 className="text-xl font-bold text-cyan-800">
+          <div className="flex justify-between items-center pb-4 mb-4 border-b dark:border-b-slate-400 border-b-secondary-300">
+            <h2 className="text-xl font-bold text-cyan-800 dark:text-white">
               {isEditSession ? "ویرایش پروژه" : "ایجاد پروژه جدید"}
             </h2>
             <XIcon
@@ -91,7 +91,7 @@ function CreateProjectForm({ open, onClose, project = {} }) {
           </div>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className=" flex flex-col gap-y-4 text-cyan-800"
+            className=" flex flex-col gap-y-4 text-cyan-800 dark:text-gray-50"
           >
             <CreateProjectField
               label="عنوان پروژه"
