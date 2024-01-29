@@ -4,7 +4,7 @@ import AppLogo from "../UI/AppLogo";
 
 function Auth() {
   return (
-    <div className=" xl:max-w-screen-2xl flex flex-col h-screen justify-center items-center  bg-gradient-to-tl from-sky-50 to-sky-100">
+    <div className=" xl:max-w-screen-2xl flex flex-col h-screen justify-center items-center  bg-gradient-to-tl from-sky-50 to-sky-100 dark:bg-gradient-to-tl dark:from-slate-700 dark:to-slate-700">
       <AppLogo/>
       <div className="mb-10 mt-5">
         <AuthContainer />
