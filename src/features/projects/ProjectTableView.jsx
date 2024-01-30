@@ -29,13 +29,13 @@ export function ProjectTableView() {
               <th scope="col" className="projectTableData">
                 وضعیت
               </th>
-              <th scope="col" className="pc-6 py-4 text-cyan-800">
+              <th scope="col" className="projectTableData">
                 نام فریلنسر
               </th>
-              <th scope="col" className="pc-6 py-4 text-cyan-800">
+              <th scope="col" className="projectTableData">
                 تنظیمات
               </th>
-              <th scope="col" className="pc-6 py-4 text-cyan-800">
+              <th scope="col" className="projectTableData">
                 صفحه پروژه
               </th>
             </Table.row>

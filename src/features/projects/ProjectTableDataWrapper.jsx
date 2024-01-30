@@ -29,7 +29,7 @@ function ProjectTableDataWrapper({ project }) {
       </td>
       <td className="projectTableData">{project?.category?.title}</td>
       <td className="projectTableData">{toLocalDateShort(project.deadline)}</td>
-      <td className="projectTableData flex gap-x-2 border-b-0">
+      <td className="projectTableData flex gap-x-2 border-b-0 dark:border-b-0">
         {project.freelancer  ? <p>درحال انجام</p> :         <span className="flex gap-x-2 items-center">{project.status == "OPEN" ? (
           <span className="badge badge--success">باز</span>
         ) : (
@@ -57,7 +57,7 @@ function ProjectTableDataWrapper({ project }) {
           </>
           <>
             <button onClick={() => setIsDeleteOpen(true)}>
-              <FaTrash className="text-lg hover:opacity-65 transition-all text-error" />
+              <FaTrash className="text-lg hover:opacity-65 transition-all text-error dark:text-rose-500" />
             </button>
             <Modal
               open={isDeleteOpen}
@@ -80,8 +80,7 @@ function ProjectTableDataWrapper({ project }) {
       </td>
       <td className="projectTableData">
         <Link to={project._id} className="flex items-center justify-center">
-          {" "}
-          <Eye className="hover:text-indigo-400 transition-all cursor-pointer" />
+          <Eye className="hover:text-indigo-400 transition-all cursor-pointer dark:text-indigo-600" />
         </Link>
       </td>
     </>

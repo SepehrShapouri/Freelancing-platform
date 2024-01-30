@@ -34,7 +34,7 @@ export default function ChangeProposalStatus({onSubmit}) {
       },
     ]}
   />
-  <button className="bg-cyan-700 text-white rounded-xl py-3 px-2 text-lg hover:opacity-80 transition-all" onClick={()=>onSubmit(status)}>تایید</button>
+  <button className="bg-cyan-700 text-white rounded-lg py-3 px-2 text-lg hover:opacity-80 transition-all dark:bg-dark-mode" onClick={()=>onSubmit(status)}>تایید</button>
     </div>
 );
 }

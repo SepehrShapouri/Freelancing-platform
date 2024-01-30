@@ -5,6 +5,7 @@ import Loader from "../../UI/Loader";
 import { IoIosMale, IoIosFemale } from "react-icons/io";
 import { ArrowRightCircle} from "lucide-react";
 import { useForm } from "react-hook-form";
+import { useThemeContext } from "../../context/ThemeContext";
 function CompleteProfileForm() {
   const [role, setRole] = useState(null);
   const {register,formState:{errors},handleSubmit} = useForm()
@@ -14,11 +15,12 @@ function CompleteProfileForm() {
     const fullname = `${name} ${lastname}`
     completeProfileHandler(fullname, email, role, gender);
   };
+  const {isDarkMode} = useThemeContext()
   return (
-    <div className="flex flex-col justify-center h-screen items-center  bg-gradient-to-br from-sky-50 to-sky-100 ">
+    <div className="flex flex-col justify-center h-screen items-center  bg-gradient-to-br from-sky-50 to-sky-100 dark:bg-gradient-to-tr dark:from-slate-700 dark:to-slate-700 ">
       <AppLogo />
       <div className="flex">
-        <div className=" bg-white sm:w-[500px] w-[400px] h-[500px] overflow-auto transition-all shadow-sm sm:rounded-r-3xl sm:rounded-l-none rounded-3xl flex justify-center">
+        <div className=" bg-white sm:w-[500px] w-[400px] h-[500px] overflow-auto transition-all shadow-sm sm:rounded-r-3xl sm:rounded-l-none rounded-3xl flex justify-center dark:bg-slate-800">
           <form onSubmit={handleSubmit(onSubmit)} className="w-full p-6 sm:px-16 sm:py-10 h-[500px] flex flex-col gap-y-6 justify-center">
             <CompleteProfileInput
             required
@@ -75,19 +77,19 @@ function CompleteProfileForm() {
         </div>
           </form>
         </div>
-        <div className="hidden sm:flex bg-white sm:w-[250px] sm:h-[500px] md:w-[350px] opacity-0 sm:opacity-100 transition-all rounded-l-3xl p-4 flex-col items-center justify-evenly border-r ">
+        <div className="hidden sm:flex dark:bg-slate-800 bg-white sm:w-[250px] sm:h-[500px] md:w-[350px] opacity-0 sm:opacity-100 transition-all rounded-l-3xl p-4 flex-col items-center justify-evenly border-r dark:border-r-slate-600">
           <img
             src="src/assets/images/7309700.jpg"
             className="w-[130px] h-[130px] rounded-full "
             alt="avatar"
           />
-          <div className="flex flex-col items-center text-cyan-800">
+          <div className="flex flex-col items-center text-cyan-800 dark:text-white dark:font-semibold">
             <h1 className="font-bold text-2xl">ساخت پروفایل</h1>
             <p className="text-xs md:text-sm mt-5">
               در کمترین زمان پروفایل کاربری خود را بسازید!
             </p>
           </div>
-          <ArrowRightCircle size={30} color="#164e63" className="mt-14"/>
+          <ArrowRightCircle size={30} color={`${isDarkMode ? "#818cf8" : "#164e63"}`} className="mt-14"/>
         </div>
       </div>
     </div>
@@ -148,9 +150,9 @@ function CompleteProfileInput({ label, name, placeholder,register,errors,require
   return (
     <>
     <span className="flex w-full items-center justify-between">
-      <label htmlFor="name" className="text-sm text-cyan-800">
+      <label htmlFor="name" className="text-sm text-cyan-800 dark:text-white">
         {label}
-        {required && <span className="text-error">*</span>}
+        {required && <span className="text-error dark:text-rose-500">*</span>}
       </label>
       <input
         type="text"
@@ -158,7 +160,7 @@ function CompleteProfileInput({ label, name, placeholder,register,errors,require
         id={name}
         placeholder={placeholder}
         {...register(name,validationSchema)}
-        className="text-sm placeholder:text-sm placeholder:opacity-50 w-[250px] rounded-md h-[40px] bg-slate-100 px-4 hover:border hover:border-gray-200 focus:border focus:border-gray-300 transition-all"
+        className="text-sm placeholder:text-sm placeholder:opacity-50 w-[250px] rounded-md h-[40px] bg-slate-100 px-4 hover:border hover:border-gray-200 focus:border focus:border-gray-300 transition-all dark:bg-slate-700 dark:placeholder:text-white"
       />
     </span>
     {errors && errors[name] && <p className="text-[12px] -my-3 text-error">{errors[name]?.message}</p>}
@@ -168,37 +170,29 @@ function CompleteProfileInput({ label, name, placeholder,register,errors,require
 function RoleSelect({ role, setRole,}) {
   return (
     <div className="flex items-center justify-between">
-      <label className="text-sm text-cyan-800">پوزیشن <span className="text-error">*</span></label>
+      <label className="text-sm text-cyan-800 dark:text-white">پوزیشن <span className="text-error dark:text-rose-500">*</span></label>
       <span className="flex  justify-between w-[250px]">
-        <div className="flex items-center  w-[100px] h-[30px] justify-between p-3">
-          <input
-            type="radio"
-            name="ROLE"
-            onChange={(e)=>setRole(e.target.value)}
-            id="FREELANCER"
-            value="FREELANCER"
-            checked={role=="FREELANCER"}
-            className="form-radio  checked:text-emerald-500 focus:ring-0"
-          />
-          <label htmlFor="FREELANCER" className="text-sm text-cyan-800">
-            فریلنسر
-          </label>
-        </div>
-        <div className="flex items-center  w-[100px] h-[30px] justify-between p-3">
-          <input
-            type="radio"
-            name="ROLE"
-            onChange={(e)=>setRole(e.target.value)}
-            id="OWNER"
-            value="OWNER"
-            checked={role=="OWNER"}
-            className="form-radio  checked:text-sky-500 focus:ring-0"
-          />
-          <label htmlFor="OWNER" className="text-sm text-cyan-800">
-            کارفرما
-          </label>
-        </div>
+        <RoleSelectInput value="FREELANCER" label="فریلنسر" role={role} setRole={setRole}/>
+        <RoleSelectInput value="OWNER" label="کارفرما" setRole={setRole} role={role}/>
       </span>
     </div>
   );
+}
+export function RoleSelectInput({value,label,role,setRole}){
+  return(
+    <div className="flex items-center  w-[100px] h-[30px] justify-between p-3">
+    <input
+      type="radio"
+      name="ROLE"
+      onChange={(e)=>setRole(e.target.value)}
+      id={value}
+      value={value}
+      checked={role==value}
+      className="form-radio  checked:text-sky-500 focus:ring-0 dark:checked:text-indigo-400"
+    />
+    <label htmlFor="OWNER" className="text-sm text-cyan-800 dark:text-white">
+{label}
+    </label>
+  </div>
+  )
 }

@@ -49,8 +49,8 @@ function SidebarContainer({ children }) {
                 }`}
               >
                 <div className="leading-4 mr-2 dark:text-gray-50">
-                  <h4 className="font-semibold text-sm">{user.name}</h4>
-                  <span className="text-xs text-gray-600 dark:text-gray-50">{user.email}</span>
+                  <h4 className="font-semibold text-sm">{user?.name}</h4>
+                  <span className="text-xs text-gray-600 dark:text-gray-50">{user?.email}</span>
                 </div>
               </div>
             )}

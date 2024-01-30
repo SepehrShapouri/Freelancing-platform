@@ -27,13 +27,13 @@ export function ProposalRow({proposal}){
           setOpen(false)
       }})
     }
-    return <tr className="bg-white border-b ">
+    return <tr className="bg-white border-b dark:bg-slate-800">
       <td className="projectTableData">{proposal.user.name}</td>
       <td className='projectTableData'>{proposal.description}</td>
       <td className='projectTableData'>{toPersianNumbers(proposal.duration)} روز</td>
       <td className='projectTableData'>{toPersianNumbersWithComma(proposal.price)}</td>
       <td className='projectTableData'>{statusBadge}</td>
-      <td className='projectTableData text-xs transition-all'><button onClick={()=>setOpen(true)} className='text-indigo-800 transition-all hover:text-indigo-400'>تغییر وضعیت</button>
+      <td className='projectTableData text-xs transition-all'><button onClick={()=>setOpen(true)} className='text-indigo-800 transition-all hover:text-indigo-400 dark:text-indigo-400 dark:font-bold'>تغییر وضعیت</button>
       <Modal open={open} onClose={()=>setOpen(false)} title={`تغییر وضعیت درخواست ${proposal.user.name}`}>
         <div className='flex justify-between'>
           <ChangeProposalStatus onSubmit={handleSubmit}/>

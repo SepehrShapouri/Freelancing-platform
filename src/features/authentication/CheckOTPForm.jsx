@@ -6,6 +6,7 @@ import { useSendOTP } from "./authHooks/useSendOTP";
 import { useCheckOTP } from "./authHooks/useCheckOTP";
 import OTPCoundown from "../../UI/OTPCoundown";
 import Loader from "../../UI/Loader";
+import { useThemeContext } from "../../context/ThemeContext";
 function CheckOTPForm({ phoneNumber, setStep }) {
   const [otp, setOtp] = useState();
   const { checkOtpHandler, isPending, data } = useCheckOTP();
@@ -14,13 +15,14 @@ function CheckOTPForm({ phoneNumber, setStep }) {
     sendOTPHandler(e, phoneNumber, setStep);
     setOtp("")
   };
+  const {isDarkMode} = useThemeContext()
   return (
     <div className="container flex flex-col items-center">
       <div className="OTPformWrapper otpformwrapper">
         <h3 className="text-xl font-semibold flex w-full justify-between">
           ورود | ثبت نام
           <button className="text-cyan-900" onClick={() => setStep(1)}>
-            <IoMdArrowRoundBack fontSize={"22px"} />
+            <IoMdArrowRoundBack fontSize={"22px"} className="dark:text-indigo-400" />
           </button>
         </h3>
         <form
@@ -49,6 +51,7 @@ function CheckOTPForm({ phoneNumber, setStep }) {
               padding: "0.5rem 0.2rem",
               borderRadius: "10px",
               border: "1px solid rgb(var(--color-primary-100))",
+              backgroundColor:`${isDarkMode ? "#334155" : "white"}`
             }}
           />
           <OTPCoundown resendOTP={resendOTP} />

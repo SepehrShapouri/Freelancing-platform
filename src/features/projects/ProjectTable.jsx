@@ -15,7 +15,7 @@ function ProjectTable() {
         {projects.length < 1 ? (
           <Empty resourceName="پروژه" />
         ) : (
-          <h2 className="text-cyan-800 text-xl sm:text-2xl font-bold">
+          <h2 className="text-cyan-800 text-xl sm:text-2xl font-bold dark:text-white">
             پروژه های شما
           </h2>
         )}

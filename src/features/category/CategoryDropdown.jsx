@@ -2,36 +2,12 @@ import React from "react";
 import { Select } from "antd";
 import { FaBoxOpen } from "react-icons/fa";
 import useAllCategories from "./categoryHooks/useAllCategories";
-export const options = [
-    {
-      value: "1",
-      label: "Not Identified",
-    },
-    {
-      value: "2",
-      label: "Closed",
-    },
-    {
-      value: "3",
-      label: "Communicated",
-    },
-    {
-      value: "4",
-      label: "Identified",
-    },
-    {
-      value: "5",
-      label: "Resolved",
-    },
-    {
-      value: "6",
-      label: "Cancelled",
-    },
-  ];
+import { useThemeContext } from "../../context/ThemeContext";
+
 function CategoryDropdown({field,errors,name}) {
     const {categories,isLoading} = useAllCategories()
     const allOptions = categories?.map((category)=>({value:category._id,label:category.title}))
-
+    const {isDarkMode} = useThemeContext()
   return (
 <div className="flex flex-col gap-y-3 my-1">
     <label htmlFor="category">

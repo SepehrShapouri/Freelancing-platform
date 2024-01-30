@@ -44,7 +44,7 @@ function OTPCoundown({ resendOTP }) {
             ثانیه دیگر
           </span>
         ) : (
-          <p className="text-cyan-600 hover:text-cyan-800">
+          <p className="text-cyan-600 hover:text-cyan-800 dark:text-indigo-400 dark:hover:text-indigo-300">
             ارسال مجدد کد تایید
           </p>
         )}

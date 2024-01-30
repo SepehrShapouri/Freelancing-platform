@@ -13,11 +13,13 @@ import Projects from "./pages/Projects";
 import SingleProject from "./pages/SingleProject";
 import Profile from "./pages/Profile";
 import ProposalTable from "./features/proposal/ProposalTable";
+import { useThemeContext } from "./context/ThemeContext";
 function App() {
   const queryClient = new QueryClient();
-  return (
+  const {isDarkMode} = useThemeContext()
+   return (
     <QueryClientProvider client={queryClient}>
-        <Toaster toastOptions={{ duration: 3300 }} />
+        <Toaster toastOptions={{ duration: 3300,style:{backgroundColor:`${isDarkMode ? "#1e293b" : "white"}` ,color:`${isDarkMode ? "white" : "#334155"}`}}}  />
         <Routes>
           <Route path="/auth" element={<Auth />} />
           <Route path="/complete-profile" element={<CompleteProfile />} />
