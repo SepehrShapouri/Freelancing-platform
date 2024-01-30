@@ -3,7 +3,7 @@ import AppLogo from "../../UI/AppLogo";
 import { useCompleteProfile } from "./authHooks/useCompleteProfile";
 import Loader from "../../UI/Loader";
 import { IoIosMale, IoIosFemale } from "react-icons/io";
-import { ArrowRightCircle} from "lucide-react";
+import { ArrowRightCircle, Moon, Sun} from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useThemeContext } from "../../context/ThemeContext";
 function CompleteProfileForm() {
@@ -15,10 +15,11 @@ function CompleteProfileForm() {
     const fullname = `${name} ${lastname}`
     completeProfileHandler(fullname, email, role, gender);
   };
-  const {isDarkMode} = useThemeContext()
+  const {isDarkMode,setIsDarkMode} = useThemeContext()
   return (
     <div className="flex flex-col justify-center h-screen items-center  bg-gradient-to-br from-sky-50 to-sky-100 dark:bg-gradient-to-tr dark:from-slate-700 dark:to-slate-700 ">
-      <AppLogo />
+      <div className="flex gap-x-4">      <div><span className="cursor-pointer text-cyan-600 hover:opacity-80 transition-all" onClick={()=>setIsDarkMode(!isDarkMode)}>{isDarkMode ? <Sun className="dark:text-white dark:hover:text-indigo-400 transition-all"/> : <Moon className="dark:text-white dark:hover:text-indigo-400 transition-all"/>}</span></div>
+      <AppLogo/></div>
       <div className="flex">
         <div className=" bg-white sm:w-[500px] w-[400px] h-[500px] overflow-auto transition-all shadow-sm sm:rounded-r-3xl sm:rounded-l-none rounded-3xl flex justify-center dark:bg-slate-800">
           <form onSubmit={handleSubmit(onSubmit)} className="w-full p-6 sm:px-16 sm:py-10 h-[500px] flex flex-col gap-y-6 justify-center">
@@ -59,7 +60,7 @@ function CompleteProfileForm() {
             <RoleSelect role={role} setRole={setRole}/>
             <aside className="text-sm flex items-center mt-2">
               <input type="radio" className="form-radio w-3 h-3 ml-4" />
-              <p>تمامی <span className="text-sky-600">قوانین</span> را خوانده و با آن ها موافقت میکنم.</p>
+              <p className="dark:text-white">تمامی <span className="text-sky-600 dark:text-indigo-400">قوانین</span> را خوانده و با آن ها موافقت میکنم.</p>
             </aside>
             <div className="w-full">
           {isPending ? (
@@ -100,51 +101,37 @@ export default CompleteProfileForm;
 function GenderSelect({ gender, setGender}) {
   return (
     <div className="flex w-full items-center justify-between">
-      <label className="text-cyan-800 text-sm">جنسیت <span className="text-error">*</span></label>
+      <label className="text-cyan-800 dark:text-white text-sm">جنسیت <span className="text-error dark:text-rose-500">*</span></label>
       <span className="flex gap-x-12">
-        <li className="list-none">
-          <input
-            type="radio"
-            id="MALE"
-            name="GENDER"
-            value="MALE"
-            className="hidden peer"
-            checked={gender == "MALE"}
-            onChange={(e) => setGender(e.target.value)}
-          />
-          <label
-            htmlFor="MALE"
-            className="flex h-[20px] items-center justify-between w-[100px] p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700  peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 "
-          >
-            <div className="flex items-center">
-              <div className="w-full text-xs font-semibold">مرد</div>
-              <IoIosMale className="text-[40px]" />
-            </div>
-          </label>
-        </li>
-        <li className="list-none">
-          <input
-            type="radio"
-            id="FEMALE"
-            name="GENDER"
-            value="FEMALE"
-            className="hidden peer"
-            checked={gender == "FEMALE"}
-            onChange={(e) => setGender(e.target.value)}
-          />
-          <label
-            htmlFor="FEMALE"
-            className="flex h-[20px] items-center justify-between w-[100px] p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700  peer-checked:border-purple-400 peer-checked:text-purple-400 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 "
-          >
-            <div className="flex items-center">
-              <div className="w-full text-xs font-semibold">زن</div>
-              <IoIosFemale className="text-[40px]" />
-            </div>
-          </label>
-        </li>
+      <GenderSelectInput label="مرد" value="MALE" icon={<IoIosMale className="text-[40px]"/>} gender={gender} setGender={setGender}/>
+        <GenderSelectInput label="زن" value="FEMALE" icon={<IoIosFemale className="text-[40px]"/>} gender={gender} setGender={setGender}/>
       </span>
     </div>
   );
+}
+function GenderSelectInput({label,value,icon,gender,setGender}){
+  return(
+    <li className="list-none">
+    <input
+      type="radio"
+      id={value}
+      name="GENDER"
+      value={value}
+      className="hidden peer"
+      checked={gender == value}
+      onChange={(e) => setGender(e.target.value)}
+    />
+    <label
+      htmlFor={value}
+      className={`flex h-[20px] items-center justify-between w-[100px] p-5 dark:font-bold dark:hover:bg-slate-600 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:bg-slate-700 ${value === "FEMALE" ? "peer-checked:border-purple-400 peer-checked:text-purple-400" : "peer-checked:border-sky-400 peer-checked:text-sky-400"} hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 `}
+    >
+      <div className="flex items-center">
+        <div className="w-full text-xs font-semibold">{label}</div>
+{icon}
+      </div>
+    </label>
+  </li>
+  )
 }
 function CompleteProfileInput({ label, name, placeholder,register,errors,required,validationSchema }) {
   return (
@@ -160,10 +147,10 @@ function CompleteProfileInput({ label, name, placeholder,register,errors,require
         id={name}
         placeholder={placeholder}
         {...register(name,validationSchema)}
-        className="text-sm placeholder:text-sm placeholder:opacity-50 w-[250px] rounded-md h-[40px] bg-slate-100 px-4 hover:border hover:border-gray-200 focus:border focus:border-gray-300 transition-all dark:bg-slate-700 dark:placeholder:text-white"
+        className="text-sm dark:text-white placeholder:text-sm placeholder:opacity-50 w-[250px] rounded-md h-[40px] dark:border-indigo-400 dark:focus:border-indigo-400 dark:hover:border-indigo-300 bg-slate-100 px-4 hover:border hover:border-gray-200 focus:border focus:border-gray-300 transition-all dark:bg-slate-700 dark:placeholder:text-white"
       />
     </span>
-    {errors && errors[name] && <p className="text-[12px] -my-3 text-error">{errors[name]?.message}</p>}
+    {errors && errors[name] && <p className="text-[12px] -my-3 text-error dark:text-rose-500">{errors[name]?.message}</p>}
           </>
   );
 }
