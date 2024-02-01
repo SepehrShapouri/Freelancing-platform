@@ -24,7 +24,7 @@ function HomePage() {
                 </div>}
             </header>
             <main className='flex flex-col sm:flex-row'>
-                <div></div>
+                <div><img src="" alt="" /></div>
                 <div></div>
             </main>
         </div>
