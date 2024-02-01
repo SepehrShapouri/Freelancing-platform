@@ -14,6 +14,7 @@ import SingleProject from "./pages/SingleProject";
 import Profile from "./pages/Profile";
 import ProposalTable from "./features/proposal/ProposalTable";
 import { useThemeContext } from "./context/ThemeContext";
+import HomePage from "./pages/HomePage";
 function App() {
   const queryClient = new QueryClient();
   const {isDarkMode} = useThemeContext()
@@ -21,6 +22,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
         <Toaster toastOptions={{ duration: 3300,style:{backgroundColor:`${isDarkMode ? "#1e293b" : "white"}` ,color:`${isDarkMode ? "white" : "#334155"}`}}}  />
         <Routes>
+          <Route path="/" element={<HomePage/>} index/>
           <Route path="/auth" element={<Auth />} />
           <Route path="/complete-profile" element={<CompleteProfile />} />
           <Route path="/owner" element={<AppLayout/>}>
@@ -29,6 +31,7 @@ function App() {
             <Route path="projects" element={<Projects/>}/>
             <Route path="projects/:id" element={<SingleProject/>}/>
             <Route path="profile" element={<Profile/>}/>
+            <Route path="owner-home" element={<Home/>}/>
             <Route path="proposals/:id" element={<ProposalTable/>}/>
           </Route>
           <Route path="/" element={<Home />} />

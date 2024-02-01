@@ -11,7 +11,7 @@ export function useUserLogout(){
         onSuccess:(data)=>{
             toast.success("شما با موفقیت از حساب کاربری خود خارج شدید")
             queryClient.removeQueries()
-            navigate("/auth")
+            navigate("/")
         },
         onError:(err)=>{
             console.log(err)

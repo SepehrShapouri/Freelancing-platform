@@ -1,18 +1,14 @@
 import React, { useState } from "react";
 import { FaDoorClosed, FaReact } from "react-icons/fa";
 import useUser from "../features/authentication/authHooks/useUser";
-import { Link } from "react-router-dom";
-import { LogOut, Moon, Sun } from "lucide-react";
 import { PiDoorOpen } from "react-icons/pi";
 import { useThemeContext } from "../context/ThemeContext";
 import { useUserLogout } from "../features/authentication/authHooks/useUserLogout";
-import { useLocalStorage } from "@uidotdev/usehooks";
 import Modal from "./Modal";
 import Logout from "../features/authentication/Logout";
+import ToggleTheme from "./ToggleTheme";
 function Header() {
-  const context = useThemeContext()
   const {user,isLoading} = useUser()
-  const {isLoggingOut,userLogout} = useUserLogout()
   const [isLogoutModalOpen,setIsLogoutModalOpen] = useState(false)
   function toggleTheme(){
 context.setIsDarkMode(prev=>!prev)
@@ -28,7 +24,7 @@ context.setIsDarkMode(prev=>!prev)
           <Modal title="واقعا میخوای بری؟ :(" open={isLogoutModalOpen} onClose={()=>setIsLogoutModalOpen(false)}>
             <Logout onClose={()=>setIsLogoutModalOpen(false)}/>
           </Modal>
-          <span className="cursor-pointer text-cyan-600 hover:opacity-80 transition-all" onClick={()=>toggleTheme()}>{context.isDarkMode ? <Sun className="dark:text-white"/> : <Moon className="dark:text-white"/>}</span>
+          <ToggleTheme/>
         </div>
     </div>
   );
