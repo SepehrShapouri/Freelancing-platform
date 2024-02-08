@@ -12,6 +12,7 @@ function withOpacity(variableName) {
 }
 
 export default {
+  important:'#app',
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: ['class', '[class="dark-mode"]'],
   theme: {
