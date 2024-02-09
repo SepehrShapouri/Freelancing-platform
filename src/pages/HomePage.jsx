@@ -76,7 +76,6 @@ function HomePage() {
             {/* </div> */}
           </div>
           <div>
-                <Image src="src/assets/images/zyro-image.png" className="w-[400px]"/>
             </div>
         </main>
       </div>
