@@ -15,40 +15,11 @@ import Profile from "./pages/Profile";
 import ProposalTable from "./features/proposal/ProposalTable";
 import { useThemeContext } from "./context/ThemeContext";
 import HomePage from "./pages/HomePage";
-import { MantineProvider, createTheme } from "@mantine/core";
 function App() {
   const queryClient = new QueryClient();
   const {isDarkMode} = useThemeContext()
-  const myColors  = [
-    "#e0fbff",
-    "#cbf2ff",
-    "#9ae2ff",
-    "#64d2ff",
-    "#3cc5fe",
-    "#23bcfe",
-    "#09b8ff",
-    "#00a1e4",
-    "#0090cd",
-    "#007cb5"
-  ]
-  const theme = createTheme({
-    colors:{
-      primary:[    "#e0fbff",
-      "#cbf2ff",
-      "#9ae2ff",
-      "#64d2ff",
-      "#3cc5fe",
-      "#23bcfe",
-      "#09b8ff",
-      "#00a1e4",
-      "#0090cd",
-      "#007cb5"]
-    },
-    primaryColor:'primary'
-  })
    return (
     <QueryClientProvider client={queryClient}>
-      <MantineProvider theme={theme}>
         <Toaster toastOptions={{ duration: 3300,style:{backgroundColor:`${isDarkMode ? "#1e293b" : "white"}` ,color:`${isDarkMode ? "white" : "#334155"}`}}}  />
         <Routes>
           <Route path="/" element={<HomePage/>} index/>
@@ -66,7 +37,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </MantineProvider>
     </QueryClientProvider>
   );
 }

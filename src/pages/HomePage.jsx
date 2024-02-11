@@ -4,7 +4,8 @@ import ToggleTheme from "../UI/ToggleTheme";
 import { IoLogoReact } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import useUser from "../features/authentication/authHooks/useUser";
-import { Button, Image } from "@mantine/core";
+import { Button } from "../UI/shadcn/Button";
+
 
 function HomePage() {
   const [isHeaderOpen, setIsHeaderOpen] = useState(false);
@@ -25,12 +26,12 @@ function HomePage() {
             onClick={() => setIsHeaderOpen((prev) => !prev)}
           />
           {isHeaderOpen && (
-            <div className="flex items-center justify-between w-full">
+            <div className="flex items-center justify-between w-full text-sm sm:text-lg">
               <h2 className="text-sm font-bold text-cyan-800 dark:text-gray-50 mr-4">
                 فرانت لنس
               </h2>
               <nav>
-                <ul className="flex gap-x-12 w-full text-cyan-800 cursor-pointer dark:text-gray-50 ">
+                <ul className="flex gap-x-3 sm:gap-x-12 w-full text-cyan-800 cursor-pointer dark:text-gray-50 ">
                   {user ? (
                     <>
                       <Link

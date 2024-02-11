@@ -6,49 +6,80 @@
 
 @layer base {
   :root {
-    &.light-mode {
-      --background-app-rgb: 255, 255, 255;
-      --color-primary-900: 74, 109, 255;
-      --color-primary-800: 92, 124, 255;
-      --color-primary-700: 110, 138, 255;
-      --color-primary-600: 128, 153, 255;
-      --color-primary-500: 146, 167, 255;
-      --color-primary-400: 164, 182, 255;
-      --color-primary-300: 183, 197, 255;
-      --color-primary-200: 201, 211, 255;
-      --color-primary-100: 219, 226, 255;
-      --color-primary-50: 228, 233, 255;
-      --color-secondary-900: 17, 24, 39;
-      --color-secondary-800: 31, 41, 55;
-      --color-secondary-700: 55, 65, 81;
-      --color-secondary-600: 75, 85, 99;
-      --color-secondary-500: 107, 114, 128;
-      --color-secondary-400: 156, 163, 175;
-      --color-secondary-300: 209, 213, 219;
-      --color-secondary-200: 229, 231, 235;
-      --color-secondary-100: 243, 244, 246;
-      --color-secondary-50: 249, 250, 251;
-      --color-secondary-0: 255, 255, 255;
-      --color-success: 0, 192, 115;
-      --color-warning: 255, 153, 0;
-      --color-error: 255, 71, 87;
-      --color-red-500: 239, 68, 68;
-      --color-red-300: 252, 165, 165;
-    }
-    &.dark-mode {
-      --color-secondary-900: 249, 250, 251;
-      --color-secondary-800: 243, 244, 246;
-      --color-secondary-700: 229, 231, 235;
-      --color-secondary-600: 209, 213, 219;
-      --color-secondary-500: 156, 163, 175;
-      --color-secondary-400: 107, 114, 128;
-      --color-secondary-300: 75, 85, 99;
-      --color-secondary-200: 55, 65, 81;
-      --color-secondary-100: 31, 41, 55;
-      --color-secondary-50: 17, 24, 39;
-      --color-secondary-0: 24, 33, 47;
-      --backdrop-color: 0, 0, 0;
-    }
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 215 20.2% 65.1%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark-mode {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 216 34% 17%;
+
+    --radius: 0.5rem;
+  }
+}
+
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
@@ -238,3 +269,4 @@ table td {
 
 
 /*  react tag input */
+
