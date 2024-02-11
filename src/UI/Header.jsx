@@ -18,7 +18,7 @@ context.setIsDarkMode(prev=>!prev)
   return (
     <div className="h-[70px] w-full border-b flex dark:border-b-slate-500 items-center justify-between p-4 dark:bg-slate-700 dark:text-slate-100 ">
         <div className="flex items-center">
-<span className="ml-4"><FaReact className="text-sky-400 text-4xl" onClick={()=>navigate("/")}/></span>
+<span className="ml-4"><FaReact className="text-sky-400 text-4xl cursor-pointer" onClick={()=>navigate("/")}/></span>
             <h2 className="text-xl font-bold text-cyan-900 dark:text-white">فرانت لنس</h2>
         </div>
         <div className={`flex items-center gap-x-6 sm:gap-x-8 ${isLoading ? "blur" : ""} transition-all sm:px-4`}>

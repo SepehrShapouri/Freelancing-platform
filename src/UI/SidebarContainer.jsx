@@ -3,13 +3,14 @@ import "../App.css";
 import { ChevronFirst, ChevronLast } from "lucide-react";
 import { CiLogout } from "react-icons/ci";
 import useUser from "../features/authentication/authHooks/useUser";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Loader from "./Loader";
 import UserAvatar from "./UserAvatar";
 const SidebarContext = createContext("");
 function SidebarContainer({ children }) {
   const [expanded, setExpanded] = useState(false);
   const { user, isLoading } = useUser();
+  const  navigate = useNavigate()
   return (
     <>
       <aside className="z-[10] overflow-auto">
