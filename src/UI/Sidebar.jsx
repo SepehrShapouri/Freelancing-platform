@@ -28,7 +28,7 @@ function Sidebar() {
         />
         <SidebarItem icon={<User size={20} />} text="پروفایل" path="profile" />
         <hr className="mt-5" />
-        <SidebarItem icon={<Settings size={20} />} text="تنظیمات" />
+        <SidebarItem icon={<Settings size={20} />} text="تنظیمات"  path="settings"/>
       </SidebarContainer>
     </div>
   );

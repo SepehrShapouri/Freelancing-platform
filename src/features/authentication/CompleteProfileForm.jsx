@@ -133,11 +133,11 @@ function GenderSelectInput({label,value,icon,gender,setGender}){
   </li>
   )
 }
-function CompleteProfileInput({ label, name, placeholder,register,errors,required,validationSchema }) {
+export function CompleteProfileInput({ label, name, placeholder,register,errors,required,validationSchema }) {
   return (
     <>
     <span className="flex w-full items-center justify-between">
-      <label htmlFor="name" className="text-sm text-cyan-800 dark:text-white">
+      <label htmlFor={name} className="text-sm text-cyan-800 dark:text-white">
         {label}
         {required && <span className="text-error dark:text-rose-500">*</span>}
       </label>

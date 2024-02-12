@@ -23,3 +23,6 @@ export function userLogoutApi(){
   .post("/user/logout")
   .then(({data})=>data.data)
 }
+export function updateUserApi(data){
+  return http.patch("/user/update",data).then(({data})=>data.data)
+}

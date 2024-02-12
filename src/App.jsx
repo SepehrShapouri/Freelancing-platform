@@ -16,6 +16,7 @@ import ProposalTable from "./features/proposal/ProposalTable";
 import { useThemeContext } from "./context/ThemeContext";
 import HomePage from "./pages/HomePage";
 import NotOwner from "./pages/NotOwner";
+import UserSettings from "./pages/UserSettings";
 function App() {
   const queryClient = new QueryClient();
   const {isDarkMode} = useThemeContext()
@@ -34,6 +35,7 @@ function App() {
             <Route path="profile" element={<Profile/>}/>
             <Route path="owner-home" element={<Home/>}/>
             <Route path="proposals/:id" element={<ProposalTable/>}/>
+            <Route path="settings" element={<UserSettings/>}/>
           </Route>
           <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />

@@ -22,7 +22,7 @@ function OwnerDashboard() {
   if(isLoading) return <Loader/>
   return (
     <div className='p-3  w-full bg-gradient-to-tl from-sky-100 to-white dark:bg-gradient-to-tl dark:from-slate-700 dark:to-slate-700  flex flex-col items-center h-full overflow-y-auto ' >
-      <h1 className='text-2xl font-bold text-cyan-800 dark:text-white m-4 self-start'>خوش آمدی {user?.name}</h1>
+      <h1 className='text-2xl font-bold text-cyan-800 dark:text-white m-4 self-start'>داشبورد شما</h1>
       <div className='flex gap-4 mt-4 flex-wrap justify-center'>
         <DashboardCard color="bg-lime-400" title="پروژه های شما" logo={<IoDocumentTextOutline className='text-2xl text-white sm:text-4xl'/>}>
           <p className='text-4xl font-bold text-white'>{toPersianNumbers(projects?.length)}</p>
