@@ -9,14 +9,11 @@ import {
   User,
 } from "lucide-react";
 import SidebarContainer, { SidebarItem } from "./SidebarContainer";
-import { useThemeContext } from "../context/ThemeContext";
 function Sidebar() {
-  const { theme, setTheme } = useThemeContext();
   return (
     <div className="flex max-h-[1024px]">
       <SidebarContainer>
-        <SidebarItem icon={<Home size={20} />} text="خانه" path="owner-home" />
-        <SidebarItem
+                <SidebarItem
           icon={<LayoutDashboard size={20} />}
           text="داشبورد"
           path="owner-dashboard"

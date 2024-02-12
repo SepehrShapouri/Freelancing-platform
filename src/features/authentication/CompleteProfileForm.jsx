@@ -133,10 +133,10 @@ function GenderSelectInput({label,value,icon,gender,setGender}){
   </li>
   )
 }
-export function CompleteProfileInput({ label, name, placeholder,register,errors,required,validationSchema }) {
+export function CompleteProfileInput({ label, name, placeholder,register,errors,required,validationSchema,width  = "w-[250px]"}) {
   return (
     <>
-    <span className="flex w-full items-center justify-between">
+    <span className="flex w-full items-center justify-between ">
       <label htmlFor={name} className="text-sm text-cyan-800 dark:text-white">
         {label}
         {required && <span className="text-error dark:text-rose-500">*</span>}
@@ -147,7 +147,7 @@ export function CompleteProfileInput({ label, name, placeholder,register,errors,
         id={name}
         placeholder={placeholder}
         {...register(name,validationSchema)}
-        className="text-sm dark:text-white placeholder:text-sm placeholder:opacity-50 w-[250px] rounded-md h-[40px] dark:border-indigo-400 dark:focus:border-indigo-400 dark:hover:border-indigo-300 bg-slate-100 px-4 hover:border hover:border-gray-200 focus:border focus:border-gray-300 transition-all dark:bg-slate-700 dark:placeholder:text-white"
+        className={`text-sm dark:text-white placeholder:text-sm placeholder:opacity-50 ${width} rounded-md h-[40px] dark:border-indigo-400 dark:focus:border-indigo-400 dark:hover:border-indigo-300 bg-slate-100 px-4 hover:border hover:border-gray-200 focus:border focus:border-gray-300 transition-all dark:bg-slate-700 dark:placeholder:text-white`}
       />
     </span>
     {errors && errors[name] && <p className="text-[12px] -my-3 text-error dark:text-rose-500">{errors[name]?.message}</p>}

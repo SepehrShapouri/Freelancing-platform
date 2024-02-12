@@ -33,7 +33,6 @@ function App() {
             <Route path="projects" element={<Projects/>}/>
             <Route path="projects/:id" element={<SingleProject/>}/>
             <Route path="profile" element={<Profile/>}/>
-            <Route path="owner-home" element={<Home/>}/>
             <Route path="proposals/:id" element={<ProposalTable/>}/>
             <Route path="settings" element={<UserSettings/>}/>
           </Route>
