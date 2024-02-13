@@ -104,15 +104,13 @@ function HomePage() {
         </main>
       </div>
       <div className=" bg-gray-50 dark:bg-slate-600">
-        <aside className="shadow-xl bg-slate-50 dark:bg-slate-800 mx-2 rounded-xl relative bottom-10">
           <nav>
-            <ul className="flex w-full justify-between px-4 py-1">
+            <ul className="flex w-full justify-between px-4 py-1 relative bottom-9">
                 <LandingPageStep logo={<MdLockPerson className="text-4xl text-sky-400 dark:text-indigo-400" />} title="پروفایلتو بساز" description="با چند کلیک اکانتتو تکمیل کن"/>
                 <LandingPageStep logo={<MdOutlineImageSearch className="text-4xl text-sky-400 dark:text-indigo-400" />} title="پروژه پیدا کن" description="بهترین پروژه ها تو فرانت لنسه!"/>
                 <LandingPageStep logo={<MdOutlineSafetyCheck className="text-4xl text-sky-400 dark:text-indigo-400" />} title="خیالت راحت" description="اینجا همه چی امن و امانه!"/>
             </ul>
           </nav>
-        </aside>
       </div>
       <footer className=" w-full h-[200px] bg-white dark:bg-slate-600 border-t dark:border-t-indigo-400 border-t-sky-400 flex items-center justify-center flex-col gap-y-3">
         <h1 className="text-xl font-bold text-cyan-800 dark:text-indigo-400">فرانت لنس</h1>
@@ -130,7 +128,7 @@ export default HomePage;
 
 export function LandingPageStep({logo,title,description}){
 return(
-    <li className="text-xs w-[150px] flex flex-col items-center text-center p-3">
+    <li className="text-xs w-[150px] flex flex-col items-center text-center  bg-white rounded-xl p-4 shadow-xl dark:bg-slate-800">
     <span>
         {logo}
     </span>

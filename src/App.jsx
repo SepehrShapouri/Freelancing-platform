@@ -7,7 +7,7 @@ import { Toaster } from "react-hot-toast";
 import CompleteProfile from "./pages/CompleteProfile";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
-import AppLayout from "./UI/AppLayout";
+import AppLayout from "./UI/OwnerLayout";
 import OwnerDashboard from "./pages/OwnerDashboard";
 import Projects from "./pages/Projects";
 import SingleProject from "./pages/SingleProject";
@@ -17,6 +17,10 @@ import { useThemeContext } from "./context/ThemeContext";
 import HomePage from "./pages/HomePage";
 import NotOwner from "./pages/NotOwner";
 import UserSettings from "./pages/UserSettings";
+import OwnerLayout from "./UI/OwnerLayout";
+import FreelancerLayout from "./pages/FreelancerLayout";
+import FreelancerDashboard from "./features/Freelancer/FreelancerDashboard";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 function App() {
   const queryClient = new QueryClient();
   const {isDarkMode} = useThemeContext()
@@ -27,7 +31,7 @@ function App() {
           <Route path="/" element={<HomePage/>} index/>
           <Route path="/auth" element={<Auth />} />
           <Route path="/complete-profile" element={<CompleteProfile />} />
-          <Route path="/owner" element={<AppLayout/>}>
+          <Route path="/owner" element={<OwnerLayout/>}>
             <Route index element={<Navigate to="owner-dashboard"/>} />
             <Route path="owner-dashboard" element={<OwnerDashboard/>}/>
             <Route path="projects" element={<Projects/>}/>
@@ -36,10 +40,18 @@ function App() {
             <Route path="proposals/:id" element={<ProposalTable/>}/>
             <Route path="settings" element={<UserSettings/>}/>
           </Route>
+          <Route path="/freelancer" element={<FreelancerLayout/>}>
+            <Route index element={<Navigate to="freelancer-dashboard"/>}/>
+            <Route path="freelancer-dashboard" element={<FreelancerDashboard/>}/>
+            <Route path="profile" element={<Profile/>}/>
+            <Route path="settings" element={<UserSettings/>}/>
+            <Route path="home" element={<Home/>}/>
+          </Route>
           <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/notowner" element={<NotOwner/>}/>
         </Routes>
+        <ReactQueryDevtools/>
     </QueryClientProvider>
   );
 }

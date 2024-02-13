@@ -109,7 +109,7 @@ export default SingleProject;
 function SingleProjectDataCard({ children, className = "w-max" }) {
   return (
     <div
-      className={`${className}  bg-secondary-0 hover:opacity-90 flex flex-col  gap-y-1 transition-all hover:-translate-y-1 shadow-sm  text-cyan-900 rounded-xl  p-4 font-bold sm:min-w-[350px]  sm:h-[110px] m-1 dark:text-white`}
+      className={`${className}  bg-white dark:bg-slate-600 hover:opacity-90 flex flex-col  gap-y-1 transition-all hover:-translate-y-1 shadow-sm  text-cyan-900 rounded-xl  p-4 font-bold sm:min-w-[350px]  sm:h-[110px] m-1 dark:text-white`}
     >
       {children}
     </div>

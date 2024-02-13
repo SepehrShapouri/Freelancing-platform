@@ -39,6 +39,7 @@ function Profile() {
                 {user.role == "OWNER" ? "کارفرما" : "فری لنسر"}
               </p>
             </span>
+            <span className="mt-2">{user.biography}</span>
           </div>
         )}
       </div>

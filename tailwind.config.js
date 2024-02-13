@@ -13,7 +13,8 @@ function withOpacity(variableName) {
 
 export default {
   important:'#app',
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}",'node_modules/flowbite-react/lib/esm/**/*.js',
+],
   darkMode: ['class', '[class="dark-mode"]'],
   theme: {
     extend: {
@@ -113,7 +114,8 @@ export default {
   plugins: [
     require('@tailwindcss/forms')(
       {strategy:"class"}
-    )
+    ),
+    require('flowbite/plugin'),
   ],
 };
 
