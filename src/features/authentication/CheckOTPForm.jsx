@@ -50,7 +50,7 @@ function CheckOTPForm({ phoneNumber, setStep }) {
               width: "2.5rem",
               padding: "0.5rem 0.2rem",
               borderRadius: "10px",
-              border: "1px solid rgb(var(--color-primary-100))",
+              border:`1px solid #475569`,
               backgroundColor:`${isDarkMode ? "#334155" : "white"}`
             }}
           />

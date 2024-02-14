@@ -42,11 +42,11 @@ function Projects() {
       </div>
     );
   return (
-    <div className="flex flex-col items-center p-2 xl:max-w-screen-xl w-full h-full bg-gradient-to-tl from-white to-sky-100 dark:bg-gradient-to-tl dark:from-slate-700 dark:to-slate-700">
-      <h1 className="self-start m-2 text-2xl font-bold text-cyan-800 dark:text-indigo-400">
+    <div className="flex flex-col items-center xl:max-w-screen-xl w-full h-full bg-gradient-to-tl from-white to-sky-100 dark:bg-gradient-to-tl dark:from-slate-700 dark:to-slate-700 justify-evenly">
+      <h1 className="text-2xl font-bold text-cyan-800 dark:text-indigo-400">
         خوش اومدی {user?.name}
       </h1>
-      <div className="w-full h-[200px] flex items-center justify-evenly flex-wrap gap-2 my-4">
+      <div className="w-full flex items-center justify-evenly gap-2">
         <LandingPageStep
           logo={
             <Search size={40} className="text-blue-400 dark:text-indigo-400" />
@@ -62,15 +62,15 @@ function Projects() {
           description="روی پروژه پیشنهاد بزار"
         />
       </div>
-      <div className="w-full px-6 flex flex-col items-center justify-between sm:justify-evenly h-[200px] ">
-        <h1 className="text-2xl">جستجو پیشرفته</h1>
+      <div className="w-full  flex flex-col items-center justify-between sm:justify-evenly gap-y-4 ">
+        <h1 className="text-2xl text-cyan-800 dark:text-white">جستجو پیشرفته</h1>
         <SearchProjects
           setSelectedCategory={setSelectedCategory}
           setSearch={setSearch}
           setSortBy={setSortBy}
         />
       </div>
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center mb-12">
         <h2 className="text-2xl font-bold text-cyan-800 dark:text-indigo-50 m-4">
           پروژه های فعال {toPersianNumbers(filteredProjects?.length)}
         </h2>

@@ -29,16 +29,14 @@ export default {
           300: withOpacity("--color-primary-300"),
           200: withOpacity("--color-primary-200"),
           100: withOpacity("--color-primary-100"),
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
         secondary: {
           900: withOpacity("--color-secondary-900"),
           800: withOpacity("--color-secondary-800"),

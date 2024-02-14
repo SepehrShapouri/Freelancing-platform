@@ -25,7 +25,7 @@ export function ProjectCard({ project }) {
       ))}
       <p>{toPersianNumbers(days)} روز</p>
       <Button
-        onClick={() => navigate(`project/${project?._id}`)}
+        onClick={() => navigate(`/freelancer/project/${project?._id}`)}
         className="font-bold bg-sky-300 hover:bg-sky-600 dark:text-white dark:bg-indigo-400 dark:hover:bg-indigo-600"
       >
         مشاهده
