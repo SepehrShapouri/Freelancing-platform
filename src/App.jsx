@@ -22,6 +22,7 @@ import FreelancerLayout from "./pages/FreelancerLayout";
 import FreelancerDashboard from "./features/Freelancer/FreelancerDashboard";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import ProjectView from "./pages/ProjectView";
+import Proposal from "./pages/Proposal";
 function App() {
   const queryClient = new QueryClient();
   const {isDarkMode} = useThemeContext()
@@ -48,6 +49,7 @@ function App() {
             <Route path="settings" element={<UserSettings/>}/>
             <Route path="home" element={<Home/>}/>
             <Route path="project/:id" element={<ProjectView/>}/>
+            <Route path="proposals/:id" element={<Proposal/>}/>
           </Route>
           <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />

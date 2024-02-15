@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useSingleProject from "../features/projects/projectsHooks/useSingleProject";
 import Loader from "../UI/Loader";
 import {
@@ -13,6 +13,7 @@ import { useMoveBack } from "../hooks/useMoveBack";
 import { FaArrowLeft } from "react-icons/fa";
 import Modal from "../UI/Modal";
 import CreateProposalForm from "../features/proposal/FreelancerProposal/CreateProposalForm";
+import ProposalTable from "../features/proposal/ProposalTable";
 
 function ProjectView() {
   const params = useParams();
@@ -22,6 +23,8 @@ function ProjectView() {
   const days = getNumberOfDays(date1, date2);
   const moveBack = useMoveBack();
   const [createProposalOpen,setCreateProposalOpen] = useState(false)
+  const navigate = useNavigate()
+  console.log(project)
   if (isProjectloading) return <Loader />;
   return (
     <div className="bg-sky-50 dark:bg-slate-700 w-full h-full p-4 flex items-center justify-center">
@@ -46,7 +49,7 @@ function ProjectView() {
           ))}
         </div>
         <div className="w-full flex flex-col gap-3">
-          <Button className="bg-white border-2 border-cyan-800 text-cyan-800 hover:bg-white hover:opacity-60 dark:hover:bg-slate-600 dark:bg-slate-600 dark:border-indigo-400 dark:text-indigo-400">
+          <Button onClick={()=>navigate(`/freelancer/proposals/${project?._id}`)} className="bg-white border-2 border-cyan-800 text-cyan-800 hover:bg-white hover:opacity-60 dark:hover:bg-slate-600 dark:bg-slate-600 dark:border-indigo-400 dark:text-indigo-400">
             مشاهده پیشنهاد های این پروژه
           </Button>
           <Button onClick={()=>setCreateProposalOpen(true)} className="bg-sky-400 text-white font-bold dark:bg-indigo-400 hover:bg-sky-600 dark:hover:bg-indigo-600 ">
