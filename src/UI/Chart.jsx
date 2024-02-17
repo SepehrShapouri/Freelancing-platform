@@ -19,13 +19,14 @@ const config = {
     type:'pie',
     data:data
 }
+import { Chart } from 'chart.js'
 import React from 'react'
 import { PieChart } from 'recharts'
 
-function Chart() {
+function FreeLancerChart() {
   return (
-    <PieChart/>
+
   )
 }
 
-export default Chart
+export default FreeLancerChart
