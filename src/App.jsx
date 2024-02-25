@@ -23,39 +23,51 @@ import FreelancerDashboard from "./features/Freelancer/FreelancerDashboard";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import ProjectView from "./pages/ProjectView";
 import Proposal from "./pages/Proposal";
+import { MantineProvider } from "@mantine/core";
 function App() {
   const queryClient = new QueryClient();
-  const {isDarkMode} = useThemeContext()
-   return (
+  const { isDarkMode } = useThemeContext();
+  return (
     <QueryClientProvider client={queryClient}>
-        <Toaster toastOptions={{ duration: 3300,style:{backgroundColor:`${isDarkMode ? "#1e293b" : "white"}` ,color:`${isDarkMode ? "white" : "#334155"}`}}}  />
+        <Toaster
+          toastOptions={{
+            duration: 3300,
+            style: {
+              backgroundColor: `${isDarkMode ? "#1e293b" : "white"}`,
+              color: `${isDarkMode ? "white" : "#334155"}`,
+            },
+          }}
+        />
         <Routes>
-          <Route path="/" element={<HomePage/>} index/>
+          <Route path="/" element={<HomePage />} index />
           <Route path="/auth" element={<Auth />} />
           <Route path="/complete-profile" element={<CompleteProfile />} />
-          <Route path="/owner" element={<OwnerLayout/>}>
-            <Route index element={<Navigate to="owner-dashboard"/>} />
-            <Route path="owner-dashboard" element={<OwnerDashboard/>}/>
-            <Route path="projects" element={<Projects/>}/>
-            <Route path="projects/:id" element={<SingleProject/>}/>
-            <Route path="profile" element={<Profile/>}/>
-            <Route path="proposals/:id" element={<ProposalTable/>}/>
-            <Route path="settings" element={<UserSettings/>}/>
+          <Route path="/owner" element={<OwnerLayout />}>
+            <Route index element={<Navigate to="owner-dashboard" />} />
+            <Route path="owner-dashboard" element={<OwnerDashboard />} />
+            <Route path="projects" element={<Projects />} />
+            <Route path="projects/:id" element={<SingleProject />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="proposals/:id" element={<ProposalTable />} />
+            <Route path="settings" element={<UserSettings />} />
           </Route>
-          <Route path="/freelancer" element={<FreelancerLayout/>}>
-            <Route index element={<Navigate to="freelancer-dashboard"/>}/>
-            <Route path="freelancer-dashboard" element={<FreelancerDashboard/>}/>
-            <Route path="profile" element={<Profile/>}/>
-            <Route path="settings" element={<UserSettings/>}/>
-            <Route path="home" element={<Home/>}/>
-            <Route path="project/:id" element={<ProjectView/>}/>
-            <Route path="proposals/:id" element={<Proposal/>}/>
+          <Route path="/freelancer" element={<FreelancerLayout />}>
+            <Route index element={<Navigate to="freelancer-dashboard" />} />
+            <Route
+              path="freelancer-dashboard"
+              element={<FreelancerDashboard />}
+            />
+            <Route path="profile" element={<Profile />} />
+            <Route path="settings" element={<UserSettings />} />
+            <Route path="home" element={<Home />} />
+            <Route path="project/:id" element={<ProjectView />} />
+            <Route path="proposals/:id" element={<Proposal />} />
           </Route>
           <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="/notowner" element={<NotOwner/>}/>
+          <Route path="/notowner" element={<NotOwner />} />
         </Routes>
-        <ReactQueryDevtools/>
+        <ReactQueryDevtools />
     </QueryClientProvider>
   );
 }

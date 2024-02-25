@@ -12,10 +12,13 @@ function withOpacity(variableName) {
 }
 
 export default {
-  important:'#app',
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}",'node_modules/flowbite-react/lib/esm/**/*.js',
-],
-  darkMode: ['class', '[class="dark-mode"]'],
+  important: "#app",
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "node_modules/flowbite-react/lib/esm/**/*.js",
+  ],
+  darkMode: ["class", '[class="dark-mode"]'],
   theme: {
     extend: {
       colors: {
@@ -73,8 +76,8 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
 
-        backdropBrightness:{
-          25:'.25'
+        backdropBrightness: {
+          25: ".25",
         },
         success: withOpacity("--color-success"),
         warning: withOpacity("--color-warning"),
@@ -105,18 +108,15 @@ export default {
       },
       fontFamily: {
         sans: ["Vazir", ...fontFamily.sans],
-        roboto:['Roboto',...fontFamily.sans]
+        roboto: ["Roboto", ...fontFamily.sans],
       },
     },
   },
   plugins: [
-    require('@tailwindcss/forms')(
-      {strategy:"class"}
-    ),
-    require('flowbite/plugin'),
+    require("@tailwindcss/forms")({ strategy: "class" }),
+    // require('flowbite/plugin'),
   ],
 };
-
 
 // import { fontFamily } from "tailwindcss/defaultTheme"
 

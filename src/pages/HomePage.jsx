@@ -17,7 +17,7 @@ function HomePage() {
   const navigate = useNavigate()
   return (
     <div>
-      <div className="bg-gradient-to-tl from-sky-50 to-sky-100 dark:bg-gradient-to-tl dark:from-slate-700 dark:to-slate-700 p-4">
+      <div className="bg-gradient-to-tl from-sky-50 to-sky-100 dark:bg-gradient-to-tl dark:from-slate-700 dark:to-slate-700 p-4 h-fullf">
         <header
           className={`flex items-center ${
             isHeaderOpen

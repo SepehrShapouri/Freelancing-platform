@@ -39,7 +39,7 @@ export function TaskList(){
     return (
       <div className='  p-4 rounded-xl shadow-xl dark:bg-slate-600 w-[310px] h-[310px]'>
         <form onSubmit={(e)=>submitTodo(e)} className=" flex justify-between items-center">
-          <input type="text" onChange={(e)=>setTodoValue(e.target.value)} value={todoValue} placeholder='امروز باید....' className='p-4 bg-transparent border-b border-b-slate-400'/>
+          <input type="text" onChange={(e)=>setTodoValue(e.target.value)} value={todoValue} placeholder='امروز باید....' className='bg-white w p-2 shadow-xl rounded-xl dark:bg-slate-700'/>
           <Button className="bg-sky-300 rounded-full text-white dark:bg-indigo-400 dark:hover:bg-indigo-600 transition-all hover:bg-sky-600" type="submit">+</Button>
         </form>
         <div className='flex flex-col gap-y-3 h-[200px] overflow-y-auto py-2'>

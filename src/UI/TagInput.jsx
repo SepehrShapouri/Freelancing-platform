@@ -7,7 +7,7 @@ function TagInput({ tags, setTags }) {
     if (!value.trim()) return;
     setTags([...tags, value]);
     e.target.value = "";
-    e.preventDefault()
+    e.preventDefault();
   }
   function removeTag(index) {
     const filteredTags = [...tags];
@@ -23,7 +23,7 @@ function TagInput({ tags, setTags }) {
         <input
           type="text"
           onKeyDown={(e) => addTag(e)}
-          className="placeholder:text-sm dark:bg-slate-800 dark:placeholder:text-white"
+          className="placeholder:text-sm dark:bg-slate-800 dark:placeholder:text-white border-none focus:ring-0"
           placeholder="اضافه کردن تگ..."
         />
       </div>

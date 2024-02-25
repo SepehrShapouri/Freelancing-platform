@@ -6,9 +6,9 @@ function ConfirmDeleteProject({resourceName,onClose,onConfirm,disabled}) {
     <h1 className="mt-4 text-sm font-semibold text-cyan-950 dark:text-white">آیا از حذفه پروژه {resourceName} اطمینان دارید؟</h1>
     <div className="flex justify-between">
         <button className="hover:opacity-65 
-        transition-all bg-error 
+        transition-all
         py-1 px-4 text-lg rounded-lg
-        dark:bg-rose-500
+       bg-rose-500
          text-white font-bold" onClick={onConfirm} disabled={disabled}>حذف</button>
         <button className="hover:opacity-65
          transition-all 
