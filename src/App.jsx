@@ -24,6 +24,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import ProjectView from "./pages/ProjectView";
 import Proposal from "./pages/Proposal";
 import { MantineProvider } from "@mantine/core";
+import FreelancerProposals from "./features/Freelancer/FreelancerProposals";
 function App() {
   const queryClient = new QueryClient();
   const { isDarkMode } = useThemeContext();
@@ -57,6 +58,7 @@ function App() {
               path="freelancer-dashboard"
               element={<FreelancerDashboard />}
             />
+              <Route path="proposals" element={<FreelancerProposals/>}/>
             <Route path="profile" element={<Profile />} />
             <Route path="settings" element={<UserSettings />} />
             <Route path="home" element={<Home />} />

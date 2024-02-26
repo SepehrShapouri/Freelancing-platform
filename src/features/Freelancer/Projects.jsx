@@ -5,7 +5,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import Loader from "../../UI/Loader";
 import { LandingPageStep } from "../../pages/HomePage";
 import { List, Search } from "lucide-react";
-import { ProjectSection} from "./ProjectSection";
+import { ProjectSection } from "./ProjectSection";
 import { toPersianNumbers } from "../../utils/toPersianNumbers";
 import { SearchProjects } from "./SearchProjects";
 
@@ -42,7 +42,7 @@ function Projects() {
       </div>
     );
   return (
-    <div className="flex flex-col items-center xl:max-w-screen-xl w-full h-full bg-gradient-to-tl from-white to-sky-100 dark:bg-gradient-to-tl dark:from-slate-700 dark:to-slate-700 justify-evenly">
+    <div className="flex flex-col items-center xl:max-w-screen-xl w-full h-full bg-gradient-to-tl from-white to-sky-100 dark:bg-gradient-to-tl dark:from-slate-700 dark:to-slate-700 justify-evenly overflow-auto max-h-screen">
       <h1 className="text-2xl font-bold text-cyan-800 dark:text-indigo-400">
         خوش اومدی {user?.name}
       </h1>
@@ -63,7 +63,9 @@ function Projects() {
         />
       </div>
       <div className="w-full  flex flex-col items-center justify-between sm:justify-evenly gap-y-4 ">
-        <h1 className="text-2xl text-cyan-800 dark:text-white">جستجو پیشرفته</h1>
+        <h1 className="text-2xl text-cyan-800 dark:text-white">
+          جستجو پیشرفته
+        </h1>
         <SearchProjects
           setSelectedCategory={setSelectedCategory}
           setSearch={setSearch}

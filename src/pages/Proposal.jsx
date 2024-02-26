@@ -19,7 +19,7 @@ function Proposal() {
     return (
       <div className="w-full h-full bg-sky-50 dark:bg-slate-700 p-4">
         <h2 className="text-2xl w-full flex items-center justify-between font-bold text-cyan-800 dark:text-indigo-400">
-          پیشنهادی روی این پروژه ثبت نشده{" "}
+          پیشنهادی روی این پروژه ثبت نشده
           <ArrowLeft
             className="text-cyan-600 dark:text-indigo-400"
             onClick={() => moveBack()}
@@ -77,7 +77,7 @@ function Proposal() {
 
 export default Proposal;
 
-export function FreelancerProposalRows({ proposal }) {
+export function FreelancerProposalRows({ proposal ,noFirstRow}) {
   const statusStyles = [
     { label: "رد شده", className: "badge badge--danger" },
     { label: "در انتظار", className: "bg-yellow-400 text-white" },
@@ -90,7 +90,7 @@ export function FreelancerProposalRows({ proposal }) {
   );
   return (
     <tr className="bg-white border-b dark:bg-slate-800">
-      <td className="projectTableData">{proposal.user.name}</td>
+{   !noFirstRow &&    <td className="projectTableData">{proposal.user.name}</td>}
       <td className="projectTableData">{proposal.description}</td>
       <td className="projectTableData">
         {toPersianNumbers(proposal.duration)} روز

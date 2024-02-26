@@ -6,7 +6,12 @@ import { Link, useNavigate } from "react-router-dom";
 import useUser from "../features/authentication/authHooks/useUser";
 import { Button } from "../UI/shadcn/Button";
 import { FaGithub, FaLinkedin, FaLock } from "react-icons/fa";
-import { MdLock, MdLockPerson, MdOutlineImageSearch, MdOutlineSafetyCheck } from "react-icons/md";
+import {
+  MdLock,
+  MdLockPerson,
+  MdOutlineImageSearch,
+  MdOutlineSafetyCheck,
+} from "react-icons/md";
 import { useAllProjects } from "../features/projects/projectsHooks/useAllProjects";
 import { toPersianNumbers } from "../utils/toPersianNumbers";
 import { LinkedInLogoIcon } from "@radix-ui/react-icons";
@@ -14,10 +19,10 @@ import { LinkedInLogoIcon } from "@radix-ui/react-icons";
 function HomePage() {
   const [isHeaderOpen, setIsHeaderOpen] = useState(false);
   const { user, isLoading } = useUser();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <div>
-      <div className="bg-gradient-to-tl from-sky-50 to-sky-100 dark:bg-gradient-to-tl dark:from-slate-700 dark:to-slate-700 p-4 h-fullf">
+      <div className="bg-gradient-to-tl from-sky-50 to-sky-100 dark:bg-gradient-to-tl dark:from-slate-700 dark:to-slate-700 p-4 h-screen w-full ">
         <header
           className={`flex items-center ${
             isHeaderOpen
@@ -104,20 +109,48 @@ function HomePage() {
         </main>
       </div>
       <div className=" bg-gray-50 dark:bg-slate-600">
-          <nav>
-            <ul className="flex w-full justify-between px-4 py-1 relative bottom-9">
-                <LandingPageStep logo={<MdLockPerson className="text-4xl text-sky-400 dark:text-indigo-400" />} title="پروفایلتو بساز" description="با چند کلیک اکانتتو تکمیل کن"/>
-                <LandingPageStep logo={<MdOutlineImageSearch className="text-4xl text-sky-400 dark:text-indigo-400" />} title="پروژه پیدا کن" description="بهترین پروژه ها تو فرانت لنسه!"/>
-                <LandingPageStep logo={<MdOutlineSafetyCheck className="text-4xl text-sky-400 dark:text-indigo-400" />} title="خیالت راحت" description="اینجا همه چی امن و امانه!"/>
-            </ul>
-          </nav>
+        <nav>
+          <ul className="flex w-full justify-between px-4 py-1 relative bottom-9">
+            <LandingPageStep
+              logo={
+                <MdLockPerson className="text-4xl text-sky-400 dark:text-indigo-400" />
+              }
+              title="پروفایلتو بساز"
+              description="با چند کلیک اکانتتو تکمیل کن"
+            />
+            <LandingPageStep
+              logo={
+                <MdOutlineImageSearch className="text-4xl text-sky-400 dark:text-indigo-400" />
+              }
+              title="پروژه پیدا کن"
+              description="بهترین پروژه ها تو فرانت لنسه!"
+            />
+            <LandingPageStep
+              logo={
+                <MdOutlineSafetyCheck className="text-4xl text-sky-400 dark:text-indigo-400" />
+              }
+              title="خیالت راحت"
+              description="اینجا همه چی امن و امانه!"
+            />
+          </ul>
+        </nav>
       </div>
       <footer className=" w-full h-[200px] bg-white dark:bg-slate-600 border-t dark:border-t-indigo-400 border-t-sky-400 flex items-center justify-center flex-col gap-y-3">
-        <h1 className="text-xl font-bold text-cyan-800 dark:text-indigo-400">فرانت لنس</h1>
+        <h1 className="text-xl font-bold text-cyan-800 dark:text-indigo-400">
+          فرانت لنس
+        </h1>
         <h1>Developed by Sepehr shapouri</h1>
         <div className="w-[300px] flex h-[50px] justify-center items-center">
-            <span className=" w-[60px] h-[60px] flex items-center justify-evenly"><a href="https://www.linkedin.com/in/sepehrshapouri/"><FaLinkedin  className="text-3xl cursor-pointer text-sky-400 dark:text-indigo-400"/></a></span>
-            <span className=" w-[60px] h-[60px] flex items-center justify-evenly"><a href="https://github.com/SepehrShapouri" ><FaGithub  className="text-3xl cursor-pointer text-sky-400 dark:text-indigo-400"/></a></span>
+          <span className=" w-[60px] h-[60px] flex items-center justify-evenly">
+            <a href="https://www.linkedin.com/in/sepehrshapouri/">
+              <FaLinkedin className="text-3xl cursor-pointer text-sky-400 dark:text-indigo-400" />
+            </a>
+          </span>
+          <span className=" w-[60px] h-[60px] flex items-center justify-evenly">
+            <a href="https://github.com/SepehrShapouri">
+              <FaGithub className="text-3xl cursor-pointer text-sky-400 dark:text-indigo-400" />
+            </a>
+          </span>
         </div>
       </footer>
     </div>
@@ -126,16 +159,14 @@ function HomePage() {
 
 export default HomePage;
 
-export function LandingPageStep({logo,title,description}){
-return(
+export function LandingPageStep({ logo, title, description }) {
+  return (
     <li className="text-xs w-[150px] flex flex-col items-center text-center  bg-white rounded-xl p-4 shadow-xl dark:bg-slate-800">
-    <span>
-        {logo}
-    </span>
-    <h3 className="text-cyan-900 dark:text-indigo-400 font-bold my-2">{title}</h3>
-    <p className="text-cyan-950 dark:text-white">
-        {description}
-    </p>
-  </li>
-)
+      <span>{logo}</span>
+      <h3 className="text-cyan-900 dark:text-indigo-400 font-bold my-2">
+        {title}
+      </h3>
+      <p className="text-cyan-950 dark:text-white">{description}</p>
+    </li>
+  );
 }

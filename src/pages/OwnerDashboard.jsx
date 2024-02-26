@@ -48,7 +48,7 @@ function OwnerDashboard() {
 export default OwnerDashboard
 export function DashboardCard({children,title,logo,color}){
   return(
-    <div className={`${color} w-[150px] lg:w-[250px] h-[150px] rounded-xl shadow-lg hover:opacity-80 transition-all flex items-center flex-col justify-evenly px-2`}>
+    <div className={`${color} w-[150px] lg:w-[250px] h-[150px] rounded-xl shadow-lg hover:opacity-80 transition-all flex items-center flex-col justify-evenly px-2 cursor-pointer`}>
       <span className='flex items-center gap-x-4'><h1 className='text-white font-bold text-sm sm:text-xl'>{title}</h1>{logo}</span>
       {children}
     </div>
