@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 
 import { fontFamily } from "tailwindcss/defaultTheme";
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
 
 function withOpacity(variableName) {
   return ({ opacityValue }) => {
@@ -117,6 +120,7 @@ export default {
     // require('flowbite/plugin'),
   ],
 };
+
 
 // import { fontFamily } from "tailwindcss/defaultTheme"
 
